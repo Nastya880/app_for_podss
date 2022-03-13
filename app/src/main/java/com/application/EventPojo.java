@@ -27,7 +27,7 @@ public class EventPojo {
 
     @Override
     public String toString() {
-        // тут можете настроить как "мероприятие" должно в списке отображаться
+        // тут можем настроить как "мероприятие" должно в списке отображаться
         return "EventPojo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
