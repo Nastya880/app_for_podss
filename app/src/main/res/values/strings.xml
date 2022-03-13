@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Application</string>
+    <string name="addButton">Добавить мероприятие</string>
+    <string name="findButton">Найти</string>
+    <string name="authorizeStatusTextView">TextView</string>
+    <string name="loginButton">Войти</string>
+</resources>
