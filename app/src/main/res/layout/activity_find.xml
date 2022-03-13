@@ -11,7 +11,7 @@
         android:layout_width="318dp"
         android:layout_height="60dp"
         android:layout_marginStart="44dp"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="48dp"
         android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -38,18 +38,49 @@
         android:id="@+id/divider3"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="244dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/list"
-        android:layout_width="319dp"
-        android:layout_height="526dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="349dp"
+        android:layout_height="401dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+    <LinearLayout
+        android:layout_width="306dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="124dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/searchDataEditText"
+            android:layout_width="296dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:hint="Введите данные для поиска"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/costTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Цена (макс.)" />
+
+        <SeekBar
+            android:id="@+id/costSeekBar"
+            android:layout_width="293dp"
+            android:layout_height="30dp"
+            android:max="10000" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

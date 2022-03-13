@@ -1,6 +1,6 @@
 package com.application;
 
-public class StudioPojo {
+public class StudioPojo extends Pojo{
     private Integer id;
     private String place;
     private String name;
@@ -67,7 +67,6 @@ public class StudioPojo {
 
     @Override
     public String toString() {
-        // отображение студии (в виде строки)
         return "StudioPojo{" +
                 "id=" + id +
                 ", place='" + place + '\'' +

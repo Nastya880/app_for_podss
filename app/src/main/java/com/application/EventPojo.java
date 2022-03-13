@@ -1,6 +1,6 @@
 package com.application;
 
-public class EventPojo {
+public class EventPojo extends Pojo{
     private Integer id;
     private String name;
 
@@ -27,7 +27,6 @@ public class EventPojo {
 
     @Override
     public String toString() {
-        // тут можем настроить как "мероприятие" должно в списке отображаться
         return "EventPojo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
