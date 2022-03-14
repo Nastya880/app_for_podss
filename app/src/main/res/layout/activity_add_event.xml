@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="323dp"
         android:layout_height="270dp"
-        android:layout_marginStart="52dp"
+        android:layout_marginStart="44dp"
         android:layout_marginTop="228dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"

@@ -28,7 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:autofillHints="" />
 
         <Button
             android:id="@+id/button4"
@@ -37,4 +38,5 @@
             android:onClick="click"
             android:text="@string/loginButton" />
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

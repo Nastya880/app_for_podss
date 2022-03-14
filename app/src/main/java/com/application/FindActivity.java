@@ -2,10 +2,12 @@ package com.application;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,8 +30,8 @@ public class FindActivity extends AppCompatActivity {
 
     boolean flag = true;
 
-    private ArrayList<EventPojo> events;
-    private ArrayList<StudioPojo> studios;
+    public static ArrayList<EventPojo> events = new ArrayList<>();
+    public static ArrayList<StudioPojo> studios = new ArrayList<>();
 
     private String filter = "";
 
@@ -46,6 +48,17 @@ public class FindActivity extends AppCompatActivity {
         findEventButton = findViewById(R.id.findEventButton);
         costSeekBar = findViewById(R.id.costSeekBar);
         costTextView = findViewById(R.id.costTextView);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                showMaps(position);
+            }
+        });
+
+
 
         costSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -90,6 +103,12 @@ public class FindActivity extends AppCompatActivity {
         refreshList();
     }
 
+    public void showMaps(int index){
+        MapsActivity.currentStudioPojo = studios.get(index);
+        Intent intent = new Intent(this, MapsActivity.class);
+        startActivity(intent);
+    }
+
     public void changeSelect() {
         if (flag) {
             findStudioButton.setEnabled(false);
@@ -115,10 +134,10 @@ public class FindActivity extends AppCompatActivity {
     }
 
     public void fillData() {
-        if (events == null) {
+        if (events.size() == 0) {
             events = APIHandler.getEvents();
         }
-        if (studios == null) {
+        if (studios.size() == 0) {
             studios = APIHandler.getStudios();
         }
     }

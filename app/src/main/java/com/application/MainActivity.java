@@ -10,6 +10,8 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static boolean authFlag = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,12 +20,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    public void showLoginActivity(View view){
-        Intent intent = new Intent(this, LoginActivity.class);
+    public void showLoginActivity(View view) {
+        Intent intent;
+        if (!authFlag) {
+            intent = new Intent(this, LoginActivity.class);
+        } else {
+            intent = new Intent(this, AddEventActivity.class);
+        }
         startActivity(intent);
     }
 
-    public void showFindActivity(View view){
+    public void showFindActivity(View view) {
         Intent intent = new Intent(this, FindActivity.class);
         startActivity(intent);
     }
