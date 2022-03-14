@@ -10,9 +10,9 @@
         android:id="@+id/linearLayout"
         android:layout_width="318dp"
         android:layout_height="60dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="48dp"
         android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -47,17 +47,19 @@
         android:id="@+id/list"
         android:layout_width="349dp"
         android:layout_height="401dp"
-        android:layout_marginStart="28dp"
         android:layout_marginTop="36dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="306dp"
         android:layout_height="110dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="124dp"
         android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/list"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
