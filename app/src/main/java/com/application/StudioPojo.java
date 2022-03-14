@@ -67,6 +67,7 @@ public class StudioPojo extends Pojo{
 
     @Override
     public String toString() {
+        //отображение студии в виде строки
         return "StudioPojo{" +
                 "id=" + id +
                 ", place='" + place + '\'' +
