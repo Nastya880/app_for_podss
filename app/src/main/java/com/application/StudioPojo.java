@@ -1,20 +1,40 @@
 package com.application;
 
-public class StudioPojo extends Pojo{
+public class StudioPojo extends Pojo {
     private Integer id;
     private String place;
     private String name;
     private String description;
     private String type;
     private Integer avgPrice;
+    private Double lat;
+    private Double lng;
 
-    public StudioPojo(Integer id, String place, String name, String description, String type, Integer avgPrice) {
+    public StudioPojo(Integer id, String place, String name, String description, String type, Integer avgPrice, Double lat, Double lng) {
         this.id = id;
         this.place = place;
         this.name = name;
         this.description = description;
         this.type = type;
         this.avgPrice = avgPrice;
+        this.lat = lat;
+        this.lng = lng;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double lat) {
+        this.lat = lat;
+    }
+
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     public Integer getId() {
@@ -67,7 +87,6 @@ public class StudioPojo extends Pojo{
 
     @Override
     public String toString() {
-        //отображение студии в виде строки
         return "StudioPojo{" +
                 "id=" + id +
                 ", place='" + place + '\'' +

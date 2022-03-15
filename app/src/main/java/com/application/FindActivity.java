@@ -1,7 +1,5 @@
 package com.application;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
@@ -28,6 +28,8 @@ public class FindActivity extends AppCompatActivity {
     SeekBar costSeekBar;
     TextView costTextView;
 
+    ListView list;
+
     boolean flag = true;
 
     public static ArrayList<EventPojo> events = new ArrayList<>();
@@ -39,7 +41,7 @@ public class FindActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find);
-        ListView list = (ListView) findViewById(R.id.list);
+        list = (ListView) findViewById(R.id.list);
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 listItems);
@@ -54,10 +56,11 @@ public class FindActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                showMaps(position);
+                if (flag) {
+                    showMaps(position);
+                }
             }
         });
-
 
 
         costSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -103,7 +106,12 @@ public class FindActivity extends AppCompatActivity {
         refreshList();
     }
 
-    public void showMaps(int index){
+    public void close(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void showMaps(int index) {
         MapsActivity.currentStudioPojo = studios.get(index);
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);

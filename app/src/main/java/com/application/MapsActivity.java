@@ -1,16 +1,16 @@
 package com.application;
 
-import android.os.Bundle;
-
 import androidx.fragment.app.FragmentActivity;
 
-import com.application.databinding.ActivityMapsBinding;
+import android.os.Bundle;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.application.databinding.ActivityMapsBinding;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -44,9 +44,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng moscow = new LatLng(55.751244, 37.618423);
-        mMap.addMarker(new MarkerOptions().position(moscow).title("Студия \"" + currentStudioPojo.getName() + "\""));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(moscow));
+        LatLng marker = new LatLng(currentStudioPojo.getLat(), currentStudioPojo.getLng());
+        mMap.addMarker(new MarkerOptions().position(marker).title("Студия \"" + currentStudioPojo.getName() + "\""));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
     }
 
 }

@@ -6,12 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".FindActivity">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/findActivityCloseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="close"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="318dp"
         android:layout_height="60dp"
+        android:layout_marginTop="80dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -38,7 +50,7 @@
         android:id="@+id/divider3"
         android:layout_width="409dp"
         android:layout_height="1dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="284dp"
         android:background="?android:attr/listDivider"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -47,11 +59,10 @@
         android:id="@+id/list"
         android:layout_width="349dp"
         android:layout_height="401dp"
-        android:layout_marginTop="36dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+        app:layout_constraintTop_toTopOf="@+id/divider3" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -61,7 +72,7 @@
         app:layout_constraintBottom_toTopOf="@+id/list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <EditText
             android:id="@+id/searchDataEditText"

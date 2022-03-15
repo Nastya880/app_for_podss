@@ -26,9 +26,7 @@ public class EventPojo extends Pojo{
     }
 
     @Override
-    public String toString()
-    {
-        //настройка как мероприятие отображается в списке
+    public String toString() {
         return "EventPojo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +

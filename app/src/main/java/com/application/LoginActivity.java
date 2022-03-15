@@ -33,6 +33,11 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
+    public void close(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
 
     public void click(View view) {
         if (checkCorrect(phoneEditText.getText().toString())) {
