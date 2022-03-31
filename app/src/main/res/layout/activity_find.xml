@@ -4,16 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back_picture"
     tools:context=".FindActivity">
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="426dp"
+        android:layout_height="78dp"
+        android:backgroundTint="@color/blue_dark"
+        android:text="ОДС"
+        android:textColor="#FFFDFD"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/findActivityCloseButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@color/blue_dark"
         android:clickable="true"
         android:onClick="close"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.853"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
@@ -34,16 +49,20 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="12dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/blue_light"
             android:onClick="setStudioFindFlag"
-            android:text="Поиск студий" />
+            android:text="         Студии     "
+            android:textSize="16sp" />
 
         <Button
             android:id="@+id/findEventButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:backgroundTint="#75B7EC"
             android:onClick="setEventFindFlag"
-            android:text="Мероприятия" />
+            android:text="Мероприятия"
+            android:textSize="16sp" />
     </LinearLayout>
 
     <View
@@ -59,40 +78,43 @@
         android:id="@+id/list"
         android:layout_width="349dp"
         android:layout_height="401dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/divider3" />
+        app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
         android:layout_width="306dp"
         android:layout_height="110dp"
+        android:layout_marginTop="156dp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+        app:layout_constraintTop_toTopOf="parent">
 
         <EditText
             android:id="@+id/searchDataEditText"
             android:layout_width="296dp"
             android:layout_height="48dp"
             android:ems="10"
-            android:hint="Введите данные для поиска"
-            android:inputType="textPersonName" />
+            android:hint="Введите название"
+            android:inputType="textPersonName"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/costTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Цена (макс.)" />
+            android:text="Цена (макс.)"
+            android:textSize="16sp" />
 
         <SeekBar
             android:id="@+id/costSeekBar"
             android:layout_width="293dp"
             android:layout_height="30dp"
-            android:max="10000" />
+            android:backgroundTint="#124F6A"
+            android:max="10000"
+            android:progressTint="#105A95" />
 
     </LinearLayout>
 
