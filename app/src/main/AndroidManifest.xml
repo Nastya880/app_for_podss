@@ -37,6 +37,9 @@
             android:name=".AddEventActivity"
             android:exported="true" />
         <activity
+            android:name=".AddDescriptionEventActivity"
+            android:exported="true" />
+        <activity
             android:name=".FindActivity"
             android:exported="true" />
         <activity

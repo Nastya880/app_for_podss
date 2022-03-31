@@ -33,11 +33,12 @@ public class AddEventActivity extends AppCompatActivity {
         if (eventTitlePlainText.getText().toString().length() > 0) {
             FindActivity.events.add(new EventPojo(FindActivity.events.size(), eventTitlePlainText.getText().toString()));
             eventTitlePlainText.setText("");
+            Intent intent = new Intent(this, AddDescriptionEventActivity.class);
+            startActivity(intent);
         } else {
             Toast toast = Toast.makeText(getApplicationContext(),
                     "Название мероприятия не может быть пустым", Toast.LENGTH_SHORT);
             toast.show();
         }
     }
-
 }
