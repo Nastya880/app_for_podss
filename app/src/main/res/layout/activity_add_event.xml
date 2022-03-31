@@ -55,6 +55,18 @@
             android:inputType="textPersonName"
             android:minHeight="48dp" />
 
+        <EditText
+            android:id="@+id/eventDescriptionPlainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#162378"
+            android:drawableTint="#2196F3"
+            android:ems="10"
+            android:foregroundTint="#15658A"
+            android:hint="Введите описание мероприятия"
+            android:inputType="textPersonName"
+            android:minHeight="48dp" />
+
         <Button
             android:id="@+id/addEventButton"
             android:layout_width="match_parent"

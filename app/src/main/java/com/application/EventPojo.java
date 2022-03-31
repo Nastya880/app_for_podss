@@ -5,7 +5,7 @@ public class EventPojo extends Pojo{
     private String name;
     private String description;
 
-    public EventPojo(Integer id, String name) {
+    public EventPojo(Integer id, String name, String description) {
         this.id = id;
         this.name = name;
         this.description = description;
@@ -39,7 +39,7 @@ public class EventPojo extends Pojo{
     public String toString() {
         return "EventPojo{" +
                 "id=" + id +
-                ", name='" + name + '\'' + "description=" + description +
+                ", name='" + name + '\'' + ", description=" + description +
                 '}';
     }
 }
