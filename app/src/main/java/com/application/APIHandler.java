@@ -23,7 +23,7 @@ public class APIHandler {
         try {
             for (int i = 0; i < jsonArray.get().length(); i++) {
                 JSONObject exploreObject = jsonArray.get().getJSONObject(i);
-                events.add(new EventPojo(exploreObject.getInt("id"), exploreObject.getString("name"), exploreObject.getString("description")));
+                events.add(new EventPojo(exploreObject.getInt("id"), exploreObject.getString("name"), exploreObject.getString("description"), exploreObject.getDouble("lat"), exploreObject.getDouble("lng")));
             }
         } catch (ExecutionException | InterruptedException | JSONException e) {
             e.printStackTrace();

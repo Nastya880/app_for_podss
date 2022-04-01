@@ -37,13 +37,13 @@
             android:name=".AddEventActivity"
             android:exported="true" />
         <activity
-            android:name=".AddDescriptionEventActivity"
-            android:exported="true" />
-        <activity
             android:name=".FindActivity"
             android:exported="true" />
         <activity
             android:name=".LoginActivity"
+            android:exported="true" />
+        <activity
+            android:name=".MessageAddEventActivity"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
@@ -53,7 +53,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
+        </activity> />
     </application>
 
 </manifest>

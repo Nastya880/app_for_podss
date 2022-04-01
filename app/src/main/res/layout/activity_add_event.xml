@@ -9,8 +9,8 @@
 
     <Button
         android:id="@+id/button7"
-        android:layout_width="444dp"
-        android:layout_height="76dp"
+        android:layout_width="440dp"
+        android:layout_height="78dp"
         android:backgroundTint="@color/blue_dark"
         android:text="ОДС"
         android:textColor="#FFFDFD"
@@ -35,8 +35,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="323dp"
-        android:layout_height="270dp"
+        android:layout_width="334dp"
+        android:layout_height="305dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,14 +58,41 @@
         <EditText
             android:id="@+id/eventDescriptionPlainText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="75dp"
             android:backgroundTint="#162378"
             android:drawableTint="#2196F3"
             android:ems="10"
             android:foregroundTint="#15658A"
             android:hint="Введите описание мероприятия"
             android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            android:textAlignment="viewStart" />
+
+        <EditText
+            android:id="@+id/eventPlaceLatPlainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#162378"
+            android:drawableTint="#2196F3"
+            android:ems="10"
+            android:foregroundTint="#15658A"
+            android:hint="Введите координату широты"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAlignment="viewStart" />
+
+        <EditText
+            android:id="@+id/eventPlaceLngPlainText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#162378"
+            android:drawableTint="#2196F3"
+            android:ems="10"
+            android:foregroundTint="#15658A"
+            android:hint="Введите координату долготы"
+            android:inputType="textPersonName"
+            android:minHeight="48dp"
+            android:textAlignment="viewStart" />
 
         <Button
             android:id="@+id/addEventButton"

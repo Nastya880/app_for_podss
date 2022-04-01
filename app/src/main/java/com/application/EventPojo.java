@@ -4,11 +4,15 @@ public class EventPojo extends Pojo{
     private Integer id;
     private String name;
     private String description;
+    private Double lat;
+    private Double lng;
 
-    public EventPojo(Integer id, String name, String description) {
+    public EventPojo(Integer id, String name, String description, double lat, double lng) {
         this.id = id;
         this.name = name;
         this.description = description;
+        this.lat = this.lat;
+        this.lng = this.lng;
     }
 
     public Integer getId() {
@@ -33,6 +37,21 @@ public class EventPojo extends Pojo{
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Double getLat() {
+        return lat;
+    }
+
+    public void setLat(Double Lat) {
+        this.lat = lat;
+    }
+    public Double getLng() {
+        return lng;
+    }
+
+    public void setLng(Double lng) {
+        this.lng = lng;
     }
 
     @Override
