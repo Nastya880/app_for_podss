@@ -56,9 +56,7 @@ public class FindActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
-                if (flag) {
-                    showMaps(position);
-                }
+                showMaps(position);
             }
         });
 
@@ -112,7 +110,12 @@ public class FindActivity extends AppCompatActivity {
     }
 
     public void showMaps(int index) {
-        MapsActivity.currentStudioPojo = studios.get(index);
+        if(flag){
+            MapsActivity.currentPojo = studios.get(index);
+        }else{
+            MapsActivity.currentPojo = events.get(index);
+        }
+
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }

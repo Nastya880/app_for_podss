@@ -1,18 +1,36 @@
 package com.application;
 
-public class EventPojo extends Pojo{
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.time.LocalDateTime;
+
+public class EventPojo extends Pojo {
     private Integer id;
     private String name;
-    private String description;
+    private String place;
+    private String dateTime;
     private Double lat;
     private Double lng;
 
-    public EventPojo(Integer id, String name, String description, double lat, double lng) {
+    public EventPojo(Integer id, String name, String place, String dateTime, Double lat, Double lng) {
         this.id = id;
         this.name = name;
-        this.description = description;
-        this.lat = this.lat;
-        this.lng = this.lng;
+        this.place = place;
+        this.dateTime = dateTime;
+        this.lat = lat;
+        this.lng = lng;
+    }
+
+    public JSONObject toJSON() throws JSONException {
+        JSONObject jo = new JSONObject();
+        jo.put("id", id);
+        jo.put("name", name);
+        jo.put("place", place);
+        jo.put("datetime", dateTime);
+        jo.put("lat", lat);
+        jo.put("lng", lng);
+        return jo;
     }
 
     public Integer getId() {
@@ -31,21 +49,30 @@ public class EventPojo extends Pojo{
         this.name = name;
     }
 
-    public String getDescription() {
-        return name;
+    public String getPlace() {
+        return place;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPlace(String place) {
+        this.place = place;
+    }
+
+    public String getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(String dateTime) {
+        this.dateTime = dateTime;
     }
 
     public Double getLat() {
         return lat;
     }
 
-    public void setLat(Double Lat) {
+    public void setLat(Double lat) {
         this.lat = lat;
     }
+
     public Double getLng() {
         return lng;
     }
@@ -58,7 +85,10 @@ public class EventPojo extends Pojo{
     public String toString() {
         return "EventPojo{" +
                 "id=" + id +
-                ", name='" + name + '\'' + ", description=" + description +
+                ", name='" + name + '\'' +
+                ", dateTime=" + dateTime +
+                ", lat=" + lat +
+                ", lng=" + lng +
                 '}';
     }
 }

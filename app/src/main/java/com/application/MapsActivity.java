@@ -17,7 +17,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private ActivityMapsBinding binding;
 
-    public static StudioPojo currentStudioPojo;
+    public static Pojo currentPojo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +44,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-        LatLng marker = new LatLng(currentStudioPojo.getLat(), currentStudioPojo.getLng());
-        mMap.addMarker(new MarkerOptions().position(marker).title("Студия \"" + currentStudioPojo.getName() + "\""));
+        LatLng marker;
+        try {
+            marker = new LatLng(((StudioPojo) currentPojo).getLat(), ((StudioPojo) currentPojo).getLng());
+            mMap.addMarker(new MarkerOptions().position(marker).title("Студия \"" + ((StudioPojo) currentPojo).getName() + "\""));
+        } catch (ClassCastException e) {
+            marker = new LatLng(((EventPojo) currentPojo).getLat(), ((EventPojo) currentPojo).getLng());
+            mMap.addMarker(new MarkerOptions().position(marker).title("Мероприятие \"" + ((EventPojo) currentPojo).getName() + "\""));
+        }
         mMap.moveCamera(CameraUpdateFactory.newLatLng(marker));
     }
 
