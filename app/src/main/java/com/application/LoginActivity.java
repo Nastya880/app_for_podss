@@ -1,7 +1,9 @@
 package com.application;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -33,10 +35,15 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    public void close(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+    //public void close(View view) {
+//        //эмулируем нажатие на HOME, сворачивая приложение
+//        Intent i = new Intent(Intent.ACTION_MAIN);
+//        i.addCategory(Intent.CATEGORY_HOME);
+//        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(i);
+        //Intent intent = new Intent(this, MainActivity.class);
+        //startActivity(intent);
+    //}
 
 
     public void click(View view) {
@@ -49,4 +56,23 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    public void mainHome(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void exitApp(View view) {
+        new AlertDialog.Builder(this)
+                .setMessage("Вы действительно хотите выйти из приложения?")
+                .setCancelable(false)
+                .setPositiveButton("да", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                                Intent i = new Intent(Intent.ACTION_MAIN);
+                                i.addCategory(Intent.CATEGORY_HOME);
+                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(i);
+                    }
+                })
+                .setNegativeButton("Нет", null).show();
+    }
 }

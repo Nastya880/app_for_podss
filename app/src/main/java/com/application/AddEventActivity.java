@@ -1,13 +1,20 @@
 package com.application;
 
+import static android.graphics.Color.BLUE;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -36,12 +43,6 @@ public class AddEventActivity extends AppCompatActivity {
         setCurrentDateOnView();
     }
 
-
-    public void close(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     // устанавливаем текущую дату
     public void setCurrentDateOnView() {
         final Calendar calendar = Calendar.getInstance();
@@ -59,8 +60,23 @@ public class AddEventActivity extends AppCompatActivity {
                     "Название мероприятие не может быть пустым", Toast.LENGTH_SHORT);
             toast.show();
         } else if (eventPlacePlainText.getText().toString().length() <= 0) {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Описание мероприятия не может быть пустым", Toast.LENGTH_SHORT);
+       //     Toast toast = Toast.makeText(getApplicationContext(),
+     //               "Описание мероприятия не может быть пустым", Toast.LENGTH_SHORT);
+            Toast toast = new Toast(getApplicationContext());
+
+            toast.setGravity(Gravity.AXIS_PULL_AFTER, 100, 0);
+            TextView tv = new TextView(AddEventActivity.this);
+           // tv.setBackground(color.BLUE);
+            tv.setTextColor(Color.RED);
+            tv.setTextSize(25);
+
+            Typeface t = Typeface.create("serif", Typeface.BOLD_ITALIC);
+            tv.setTypeface(t);
+            tv.setPadding(10,10,10,10);
+            tv.setText("\"Поле нем ожет быть пустым\"");
+            toast.setView(tv);
+
+
             toast.show();
         } else if (latEditTextNumberDecimal.getText().toString().length() <= 0) {
             Toast toast = Toast.makeText(getApplicationContext(),
@@ -90,5 +106,25 @@ public class AddEventActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MessageAddEventActivity.class);
             startActivity(intent);
         }
+    }
+
+    public void mainHome(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void exitApp(View view) {
+        new AlertDialog.Builder(this)
+                .setMessage("Вы действительно хотите выйти из приложения?")
+                .setCancelable(false)
+                .setPositiveButton("да", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent i = new Intent(Intent.ACTION_MAIN);
+                        i.addCategory(Intent.CATEGORY_HOME);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
+                    }
+                })
+                .setNegativeButton("Нет", null).show();
     }
 }

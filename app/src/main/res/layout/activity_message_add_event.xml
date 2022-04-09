@@ -61,20 +61,36 @@
         android:onClick="addNewButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"/>
 
     <Button
-        android:id="@+id/lookInfoAddedEventButton"
-        android:layout_width="253dp"
-        android:layout_height="124dp"
-        android:layout_marginTop="60dp"
-        android:backgroundTint="@color/blue_light"
-        android:onClick="lookInfoAddedEvent"
-        android:text="Посмотреть информацию о добавленном мероприятии"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/button8"
+        android:id="@+id/imageExitButton"
+        android:layout_width="68dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_close_black_24dp"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:onClick="exitApp"
+        app:layout_constraintBottom_toBottomOf="@+id/button7"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button7"
+        app:layout_constraintVertical_bias="0.47000003"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:id="@+id/imageMainHomeButton"
+        android:layout_width="63dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/ic_home_black_24dp__2_"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:onClick="mainHome"
+        app:layout_constraintBottom_toBottomOf="@+id/button7"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addNewEventButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="@+id/button7"
+        app:layout_constraintVertical_bias="0.62" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

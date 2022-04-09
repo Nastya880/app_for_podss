@@ -8,31 +8,35 @@
     tools:context=".MainActivity">
 
     <LinearLayout
-        android:layout_width="211dp"
-        android:layout_height="207dp"
+        android:layout_width="259dp"
+        android:layout_height="433dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.559"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.852">
 
         <Button
             android:id="@+id/addButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/blue_light"
+            android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"
             android:onClick="showLoginActivity"
             android:text="@string/addButton"
-            android:textSize="16sp" />
+            android:textSize="22sp" />
 
         <Button
             android:id="@+id/findButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/blue_light"
+            android:drawableLeft="@drawable/ic_search_black_24dp"
             android:onClick="showFindActivity"
             android:text="@string/findButton"
-            android:textSize="16sp" />
+            android:textSize="22sp" />
 
     </LinearLayout>
 
@@ -45,7 +49,6 @@
         android:textColor="#FFFDFD"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -61,4 +64,33 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <Button
+        android:id="@+id/imageExitButton"
+        android:layout_width="61dp"
+        android:layout_height="59dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/ic_close_black_24dp"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:onClick="exitApp"
+        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.47000003"
+        tools:ignore="OnClick" />
+
+    <Button
+        android:id="@+id/imageInfoButton"
+        android:layout_width="70dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/ic_info_black_24dp"
+        android:backgroundTint="@color/white"
+        android:clickable="true"
+        android:onClick="info"
+        app:layout_constraintBottom_toBottomOf="@+id/button2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.62"
+        tools:ignore="OnClick" />
 </androidx.constraintlayout.widget.ConstraintLayout>

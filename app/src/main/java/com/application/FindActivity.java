@@ -1,7 +1,9 @@
 package com.application;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -104,11 +106,6 @@ public class FindActivity extends AppCompatActivity {
         refreshList();
     }
 
-    public void close(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
     public void showMaps(int index) {
         if(flag){
             MapsActivity.currentPojo = studios.get(index);
@@ -193,4 +190,23 @@ public class FindActivity extends AppCompatActivity {
         }
     }
 
+    public void exitApp(View view) {
+        new AlertDialog.Builder(this)
+                .setMessage("Вы действительно хотите выйти из приложения?")
+                .setCancelable(false)
+                .setPositiveButton("да", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent i = new Intent(Intent.ACTION_MAIN);
+                        i.addCategory(Intent.CATEGORY_HOME);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
+                    }
+                })
+                .setNegativeButton("Нет", null).show();
+    }
+
+    public void mainHome(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
 }
