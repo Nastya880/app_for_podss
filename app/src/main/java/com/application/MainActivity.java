@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("Нет", null).show();
     }
+
     final String LOG_TAG = "myLogs";
     final int DIALOG = 1;
 
@@ -64,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected Dialog onCreateDialog(int id) {
         if (id == DIALOG) {
-            Log.d(LOG_TAG, "Create");
+            //Log.d(LOG_TAG, "Create");
             AlertDialog.Builder adb = new AlertDialog.Builder(this);
             adb.setTitle("Информация");
             adb.setMessage("Приложение разработано в рамках выпускной работы в МИЭТ студенткой группы ПИН-41 Макеевой Анастасией");
@@ -74,21 +75,21 @@ public class MainActivity extends AppCompatActivity {
             // обработчик отображения
             dialog.setOnShowListener(new DialogInterface.OnShowListener() {
                 public void onShow(DialogInterface dialog) {
-                    Log.d(LOG_TAG, "Show");
+                 //   Log.d(LOG_TAG, "Show");
                 }
             });
 
             // обработчик отмены
             dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                 public void onCancel(DialogInterface dialog) {
-                    Log.d(LOG_TAG, "Cancel");
+                 //   Log.d(LOG_TAG, "Cancel");
                 }
             });
 
             // обработчик закрытия
             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 public void onDismiss(DialogInterface dialog) {
-                    Log.d(LOG_TAG, "Dismiss");
+            //        Log.d(LOG_TAG, "Dismiss");
                 }
             });
             return dialog;

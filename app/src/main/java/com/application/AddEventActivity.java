@@ -52,6 +52,8 @@ public class AddEventActivity extends AppCompatActivity {
 
         // Устанавливаем текущую дату для DatePicker
         datePicker.init(year, month, day, null);
+
+        datePicker.setMinDate(System.currentTimeMillis());
     }
 
     public void addEvent(View view) {
@@ -60,13 +62,13 @@ public class AddEventActivity extends AppCompatActivity {
                     "Название мероприятие не может быть пустым", Toast.LENGTH_SHORT);
             toast.show();
         } else if (eventPlacePlainText.getText().toString().length() <= 0) {
-       //     Toast toast = Toast.makeText(getApplicationContext(),
-     //               "Описание мероприятия не может быть пустым", Toast.LENGTH_SHORT);
+            //     Toast toast = Toast.makeText(getApplicationContext(),
+            //               "Описание мероприятия не может быть пустым", Toast.LENGTH_SHORT);
             Toast toast = new Toast(getApplicationContext());
 
             toast.setGravity(Gravity.AXIS_PULL_AFTER, 100, 0);
             TextView tv = new TextView(AddEventActivity.this);
-           // tv.setBackground(color.BLUE);
+            // tv.setBackground(color.BLUE);
             tv.setTextColor(Color.RED);
             tv.setTextSize(25);
 
@@ -87,7 +89,7 @@ public class AddEventActivity extends AppCompatActivity {
                     "Кооордината долготы не может быть пустой", Toast.LENGTH_SHORT);
             toast.show();
         } else {
-            String month = String.valueOf(datePicker.getMonth());
+            String month = String.valueOf(datePicker.getMonth() + 1);
             String day = String.valueOf(datePicker.getDayOfMonth());
             String year = String.valueOf(datePicker.getYear());
             if (day.length() == 1) {
