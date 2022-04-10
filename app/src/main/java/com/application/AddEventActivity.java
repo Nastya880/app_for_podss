@@ -96,7 +96,7 @@ public class AddEventActivity extends AppCompatActivity {
                     "Кооордината долготы не может быть пустой", Toast.LENGTH_SHORT);
             toast.show();
         } else {
-           // time = (TextView) findViewById(R.id.time);
+
             timePicker = (TimePicker) findViewById(R.id.simpleTimePicker);
             timePicker.setIs24HourView(true); // used to display 24 mode
 
