@@ -18,6 +18,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateUtils;
@@ -31,6 +33,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class AddEventActivity extends AppCompatActivity {
@@ -82,6 +85,33 @@ public class AddEventActivity extends AppCompatActivity {
         datePicker.setMinDate(System.currentTimeMillis());
     }
 
+    private boolean checkAddressString(double LATITUDE, double LONGITUDE) {
+        String strAdd = "";
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(LATITUDE, LONGITUDE, 1);
+            if (addresses != null) {
+                Address returnedAddress = addresses.get(0);
+                StringBuilder strReturnedAddress = new StringBuilder("");
+
+                for (int i = 0; i <= returnedAddress.getMaxAddressLineIndex(); i++) {
+                    strReturnedAddress.append(returnedAddress.getAddressLine(i)).append("\n");
+                }
+                strAdd = strReturnedAddress.toString();
+                //Log.w("My Current loction address", strReturnedAddress.toString());
+            } else {
+                //Toast toast = Toast.makeText(getApplicationContext(), "noo", Toast.LENGTH_SHORT);
+                //toast.show();
+                //Log.w("My Current loction address", "No Address returned!");
+                return false;
+            }
+        } catch (Exception e) {
+            //Log.w("My Current loction address", "Canont get Address!");
+            return false;
+        }
+        return true;
+    }
+
     public void addEvent(View view) {
 
         final int DIALOG_EXIT = 1;
@@ -94,14 +124,30 @@ public class AddEventActivity extends AppCompatActivity {
             adb.create();
             showDialog(DIALOG_EXIT);
             adb.show();
-        } else if (eventPlacePlainText.getText().toString().length() <= 0) {
+        }   else if (eventTitlePlainText.getText().toString().length() >= 50) {
+            adb.setTitle(R.string.error);
+            adb.setMessage("Название мероприятия слишком большое");
+            adb.setNeutralButton(R.string.ok, myClickListener);
+            adb.create();
+            showDialog(DIALOG_EXIT);
+            adb.show();
+        }
+        else if (eventPlacePlainText.getText().toString().length() <= 0) {
             adb.setTitle(R.string.error);
             adb.setMessage("Описание мероприятия не может быть пустым");
             adb.setNeutralButton(R.string.ok, myClickListener);
             adb.create();
             showDialog(DIALOG_EXIT);
             adb.show();
-        } else if (latEditTextNumberDecimal.getText().toString().length() <= 0) {
+        } else if (eventPlacePlainText.getText().toString().length() >= 255) {
+            adb.setTitle(R.string.error);
+            adb.setMessage("Описание мероприятия слишком большое");
+            adb.setNeutralButton(R.string.ok, myClickListener);
+            adb.create();
+            showDialog(DIALOG_EXIT);
+            adb.show();
+        }
+        else if (latEditTextNumberDecimal.getText().toString().length() <= 0) {
             adb.setTitle(R.string.error);
             adb.setMessage("Координата широты не может быть пустой");
             adb.setNeutralButton(R.string.ok, myClickListener);
@@ -111,6 +157,14 @@ public class AddEventActivity extends AppCompatActivity {
         } else if (lngEditTextNumberDecimal.getText().toString().length() <= 0) {
             adb.setTitle(R.string.error);
             adb.setMessage("Координата долготы  не может быть пустой");
+            adb.setNeutralButton(R.string.ok, myClickListener);
+            adb.create();
+            showDialog(DIALOG_EXIT);
+            adb.show();
+        } else if (!checkAddressString(Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())))
+        {
+            adb.setTitle(R.string.error);
+            adb.setMessage("Введенные координаты не удовлетворяют существующему местоположению. Введите корректные координаты");
             adb.setNeutralButton(R.string.ok, myClickListener);
             adb.create();
             showDialog(DIALOG_EXIT);
@@ -133,6 +187,8 @@ public class AddEventActivity extends AppCompatActivity {
             if (month.length() == 1) {
                 month = "0" + month;
             }
+
+
 
             String stringDate = String.format("%s-%s-%s %s:%s:%s", year, month, day, hour, minute, "00");
 

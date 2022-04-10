@@ -3,6 +3,7 @@ package com.application;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,7 +26,17 @@ public class LoginActivity extends AppCompatActivity {
         phoneEditText = findViewById(R.id.editTextPhone);
     }
 
+
     private boolean checkCorrect(String phoneString) {
+
+
+        //String phoneNumber = "+7(9##) ###-##-##";
+       // String text = String.valueOf( android.telephony.PhoneNumberUtils.formatNumber(phoneNumber) );
+        //formatted: 123-456-7890
+        //phoneEditText.setText(text);
+        //set editText text equal to new formatted number
+        //phoneEditText.setSelection(text.length());
+        //move cursor to end of editText view
         if (phoneString.length() != 12) {
             return false;
         }
@@ -35,16 +46,18 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    //public void close(View view) {
-//        //эмулируем нажатие на HOME, сворачивая приложение
-//        Intent i = new Intent(Intent.ACTION_MAIN);
-//        i.addCategory(Intent.CATEGORY_HOME);
-//        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        startActivity(i);
-        //Intent intent = new Intent(this, MainActivity.class);
-        //startActivity(intent);
-    //}
-
+    DialogInterface.OnClickListener myClickListener = new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                // негативная кнопка
+                case Dialog.BUTTON_NEGATIVE:
+                    break;
+                // нейтральная кнопка
+                case Dialog.BUTTON_NEUTRAL:
+                    break;
+            }
+        }
+    };
 
     public void click(View view) {
         if (checkCorrect(phoneEditText.getText().toString())) {
@@ -52,7 +65,15 @@ public class LoginActivity extends AppCompatActivity {
             Intent intent = new Intent(this, AddEventActivity.class);
             startActivity(intent);
         } else {
-            loginInfoText.setText("Неверный формат! Введите номер телефона в формате +7..");
+            final int DIALOG_EXIT = 1;
+            AlertDialog.Builder adb = new AlertDialog.Builder(this);
+            adb.setTitle(R.string.error);
+            adb.setMessage("Введите ваш номер телефона в формате: +7 (9ХХ) ХХХ-ХХ-ХХ");
+            adb.setNeutralButton(R.string.ok, myClickListener);
+            adb.create();
+            showDialog(DIALOG_EXIT);
+            adb.show();
+            //loginInfoText.setText("Неверный формат! Введите номер телефона в формате +7..");
         }
     }
 
