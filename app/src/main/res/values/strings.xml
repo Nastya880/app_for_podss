@@ -5,4 +5,7 @@
     <string name="authorizeStatusTextView">TextView</string>
     <string name="loginButton">Войти</string>
     <string name="title_activity_maps">MapsActivity</string>
+    <string name="exit">Выход</string>
+    <string name="ok">OK</string>
+    <string name="error">OШИБКА</string>
 </resources>

@@ -2,6 +2,9 @@ package com.application;
 
 import static android.graphics.Color.BLUE;
 
+import static java.util.Locale.*;
+
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,6 +18,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.format.DateUtils;
 import android.util.Log;
@@ -27,6 +31,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
+import java.util.Locale;
 
 public class AddEventActivity extends AppCompatActivity {
 
@@ -37,6 +42,7 @@ public class AddEventActivity extends AppCompatActivity {
     EditText lngEditTextNumberDecimal;
     //TextView time;
     TimePicker timePicker;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +55,19 @@ public class AddEventActivity extends AppCompatActivity {
         lngEditTextNumberDecimal = findViewById(R.id.lngEditTextNumberDecimal);
         setCurrentDateOnView();
     }
+
+    DialogInterface.OnClickListener myClickListener = new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                // негативная кнопка
+                case Dialog.BUTTON_NEGATIVE:
+                    break;
+                // нейтральная кнопка
+                case Dialog.BUTTON_NEUTRAL:
+                    break;
+            }
+        }
+    };
 
     // устанавливаем текущую дату
     public void setCurrentDateOnView() {
@@ -64,37 +83,38 @@ public class AddEventActivity extends AppCompatActivity {
     }
 
     public void addEvent(View view) {
+
+        final int DIALOG_EXIT = 1;
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+
         if (eventTitlePlainText.getText().toString().length() <= 0) {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Название мероприятие не может быть пустым", Toast.LENGTH_SHORT);
-            toast.show();
+            adb.setTitle(R.string.error);
+            adb.setMessage("Название мероприятия не может быть пустым");
+            adb.setNeutralButton(R.string.ok, myClickListener);
+            adb.create();
+            showDialog(DIALOG_EXIT);
+            adb.show();
         } else if (eventPlacePlainText.getText().toString().length() <= 0) {
-            //     Toast toast = Toast.makeText(getApplicationContext(),
-            //               "Описание мероприятия не может быть пустым", Toast.LENGTH_SHORT);
-            Toast toast = new Toast(getApplicationContext());
-
-            toast.setGravity(Gravity.AXIS_PULL_AFTER, 100, 0);
-            TextView tv = new TextView(AddEventActivity.this);
-            // tv.setBackground(color.BLUE);
-            tv.setTextColor(Color.RED);
-            tv.setTextSize(25);
-
-            Typeface t = Typeface.create("serif", Typeface.BOLD_ITALIC);
-            tv.setTypeface(t);
-            tv.setPadding(10,10,10,10);
-            tv.setText("\"Поле нем ожет быть пустым\"");
-            toast.setView(tv);
-
-
-            toast.show();
+            adb.setTitle(R.string.error);
+            adb.setMessage("Описание мероприятия не может быть пустым");
+            adb.setNeutralButton(R.string.ok, myClickListener);
+            adb.create();
+            showDialog(DIALOG_EXIT);
+            adb.show();
         } else if (latEditTextNumberDecimal.getText().toString().length() <= 0) {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Координата широты не может быть пустой", Toast.LENGTH_SHORT);
-            toast.show();
+            adb.setTitle(R.string.error);
+            adb.setMessage("Координата широты не может быть пустой");
+            adb.setNeutralButton(R.string.ok, myClickListener);
+            adb.create();
+            showDialog(DIALOG_EXIT);
+            adb.show();
         } else if (lngEditTextNumberDecimal.getText().toString().length() <= 0) {
-            Toast toast = Toast.makeText(getApplicationContext(),
-                    "Кооордината долготы не может быть пустой", Toast.LENGTH_SHORT);
-            toast.show();
+            adb.setTitle(R.string.error);
+            adb.setMessage("Координата долготы  не может быть пустой");
+            adb.setNeutralButton(R.string.ok, myClickListener);
+            adb.create();
+            showDialog(DIALOG_EXIT);
+            adb.show();
         } else {
 
             timePicker = (TimePicker) findViewById(R.id.simpleTimePicker);
@@ -104,6 +124,7 @@ public class AddEventActivity extends AppCompatActivity {
             String day = String.valueOf(datePicker.getDayOfMonth());
             String year = String.valueOf(datePicker.getYear());
 
+            //timePicker.setCurrentMinute();
             String hour = String.valueOf(timePicker.getHour());
             String minute = String.valueOf(timePicker.getMinute());
             if (day.length() == 1) {
