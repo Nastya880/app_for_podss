@@ -5,6 +5,9 @@ import static android.graphics.Color.BLUE;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
+import android.app.Dialog;
+import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -13,12 +16,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.text.format.DateUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -30,6 +35,8 @@ public class AddEventActivity extends AppCompatActivity {
     DatePicker datePicker;
     EditText latEditTextNumberDecimal;
     EditText lngEditTextNumberDecimal;
+    //TextView time;
+    TimePicker timePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,16 +96,25 @@ public class AddEventActivity extends AppCompatActivity {
                     "Кооордината долготы не может быть пустой", Toast.LENGTH_SHORT);
             toast.show();
         } else {
+           // time = (TextView) findViewById(R.id.time);
+            timePicker = (TimePicker) findViewById(R.id.simpleTimePicker);
+            timePicker.setIs24HourView(true); // used to display 24 mode
+
             String month = String.valueOf(datePicker.getMonth() + 1);
             String day = String.valueOf(datePicker.getDayOfMonth());
             String year = String.valueOf(datePicker.getYear());
+
+            String hour = String.valueOf(timePicker.getHour());
+            String minute = String.valueOf(timePicker.getMinute());
             if (day.length() == 1) {
                 day = "0" + day;
             }
             if (month.length() == 1) {
                 month = "0" + month;
             }
-            String stringDate = String.format("%s-%s-%s", year, month, day);
+
+            String stringDate = String.format("%s-%s-%s %s:%s:%s", year, month, day, hour, minute, "00");
+
             APIHandler.addEvent(new EventPojo(-1, eventTitlePlainText.getText().toString(), eventPlacePlainText.getText().toString(),
                     stringDate, Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())));
             eventTitlePlainText.setText("");
@@ -129,4 +145,6 @@ public class AddEventActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("Нет", null).show();
     }
+
+
 }
