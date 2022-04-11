@@ -26,10 +26,7 @@ public class LoginActivity extends AppCompatActivity {
         phoneEditText = findViewById(R.id.editTextPhone);
     }
 
-
     private boolean checkCorrect(String phoneString) {
-
-
         //String phoneNumber = "+7(9##) ###-##-##";
        // String text = String.valueOf( android.telephony.PhoneNumberUtils.formatNumber(phoneNumber) );
         //formatted: 123-456-7890
@@ -46,19 +43,6 @@ public class LoginActivity extends AppCompatActivity {
         return true;
     }
 
-    DialogInterface.OnClickListener myClickListener = new DialogInterface.OnClickListener() {
-        public void onClick(DialogInterface dialog, int which) {
-            switch (which) {
-                // негативная кнопка
-                case Dialog.BUTTON_NEGATIVE:
-                    break;
-                // нейтральная кнопка
-                case Dialog.BUTTON_NEUTRAL:
-                    break;
-            }
-        }
-    };
-
     public void click(View view) {
         if (checkCorrect(phoneEditText.getText().toString())) {
             MainActivity.authFlag = true;
@@ -69,11 +53,10 @@ public class LoginActivity extends AppCompatActivity {
             AlertDialog.Builder adb = new AlertDialog.Builder(this);
             adb.setTitle(R.string.error);
             adb.setMessage("Введите ваш номер телефона в формате: +7 (9ХХ) ХХХ-ХХ-ХХ");
-            adb.setNeutralButton(R.string.ok, myClickListener);
+            adb.setNeutralButton(R.string.ok, null);
             adb.create();
             showDialog(DIALOG_EXIT);
             adb.show();
-            //loginInfoText.setText("Неверный формат! Введите номер телефона в формате +7..");
         }
     }
 
