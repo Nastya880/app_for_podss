@@ -32,6 +32,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.lang.reflect.Field;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
@@ -40,12 +42,13 @@ public class AddEventActivity extends AppCompatActivity {
 
     EditText eventTitlePlainText;
     EditText eventPlacePlainText;
-    DatePicker datePicker;
     EditText latEditTextNumberDecimal;
     EditText lngEditTextNumberDecimal;
-    //TextView time;
     TimePicker timePicker;
-    Dialog dialog;
+
+    EditText dateText;
+    final Calendar calendar = Calendar.getInstance();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,36 +56,37 @@ public class AddEventActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_event);
         eventTitlePlainText = findViewById(R.id.eventTitlePlainText);
         eventPlacePlainText = findViewById(R.id.eventPlacePlainText);
-        datePicker = findViewById(R.id.datePicker);
         latEditTextNumberDecimal = findViewById(R.id.latEditTextNumberDecimal);
         lngEditTextNumberDecimal = findViewById(R.id.lngEditTextNumberDecimal);
-        setCurrentDateOnView();
+
+        dateText=(EditText) findViewById(R.id.dateText);
+        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                calendar.set(Calendar.YEAR, year);
+                calendar.set(Calendar.MONTH,month);
+                calendar.set(Calendar.DAY_OF_MONTH,day);
+
+                updateLabel();
+            }
+        };
+        dateText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DatePickerDialog dialog = new  DatePickerDialog(AddEventActivity.this,date,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(Calendar.DAY_OF_MONTH));
+
+                // Устанавливаем текущую дату для DatePicker
+                dialog.getDatePicker().setMinDate(System.currentTimeMillis());
+                dialog.show();
+            }
+        });
     }
 
-    DialogInterface.OnClickListener myClickListener = new DialogInterface.OnClickListener() {
-        public void onClick(DialogInterface dialog, int which) {
-            switch (which) {
-                // негативная кнопка
-                case Dialog.BUTTON_NEGATIVE:
-                    break;
-                // нейтральная кнопка
-                case Dialog.BUTTON_NEUTRAL:
-                    break;
-            }
-        }
-    };
+    private void updateLabel(){
+        String myFormat="yyyy-MM-dd";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
 
-    // устанавливаем текущую дату
-    public void setCurrentDateOnView() {
-        final Calendar calendar = Calendar.getInstance();
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
-
-        // Устанавливаем текущую дату для DatePicker
-        datePicker.init(year, month, day, null);
-
-        datePicker.setMinDate(System.currentTimeMillis());
+        dateText.setText(dateFormat.format(calendar.getTime()));
     }
 
     private boolean checkAddressString(double LATITUDE, double LONGITUDE) {
@@ -100,8 +104,6 @@ public class AddEventActivity extends AppCompatActivity {
                 strAdd = strReturnedAddress.toString();
                 //Log.w("My Current loction address", strReturnedAddress.toString());
             } else {
-                //Toast toast = Toast.makeText(getApplicationContext(), "noo", Toast.LENGTH_SHORT);
-                //toast.show();
                 //Log.w("My Current loction address", "No Address returned!");
                 return false;
             }
@@ -112,88 +114,50 @@ public class AddEventActivity extends AppCompatActivity {
         return true;
     }
 
+    public void showAlertDialog(String message)
+    {
+        final int DIALOG_EXIT = 1;
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+
+        adb.setTitle(R.string.error);
+        adb.setMessage(message);
+        adb.setNeutralButton(R.string.ok, null);
+        adb.create();
+        showDialog(DIALOG_EXIT);
+        adb.show();
+    }
+
     public void addEvent(View view) {
 
         final int DIALOG_EXIT = 1;
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
 
-        if (eventTitlePlainText.getText().toString().length() <= 0) {
-            adb.setTitle(R.string.error);
-            adb.setMessage("Название мероприятия не может быть пустым");
-            adb.setNeutralButton(R.string.ok, myClickListener);
-            adb.create();
-            showDialog(DIALOG_EXIT);
-            adb.show();
-        }   else if (eventTitlePlainText.getText().toString().length() >= 50) {
-            adb.setTitle(R.string.error);
-            adb.setMessage("Название мероприятия слишком большое");
-            adb.setNeutralButton(R.string.ok, myClickListener);
-            adb.create();
-            showDialog(DIALOG_EXIT);
-            adb.show();
-        }
-        else if (eventPlacePlainText.getText().toString().length() <= 0) {
-            adb.setTitle(R.string.error);
-            adb.setMessage("Описание мероприятия не может быть пустым");
-            adb.setNeutralButton(R.string.ok, myClickListener);
-            adb.create();
-            showDialog(DIALOG_EXIT);
-            adb.show();
-        } else if (eventPlacePlainText.getText().toString().length() >= 255) {
-            adb.setTitle(R.string.error);
-            adb.setMessage("Описание мероприятия слишком большое");
-            adb.setNeutralButton(R.string.ok, myClickListener);
-            adb.create();
-            showDialog(DIALOG_EXIT);
-            adb.show();
-        }
-        else if (latEditTextNumberDecimal.getText().toString().length() <= 0) {
-            adb.setTitle(R.string.error);
-            adb.setMessage("Координата широты не может быть пустой");
-            adb.setNeutralButton(R.string.ok, myClickListener);
-            adb.create();
-            showDialog(DIALOG_EXIT);
-            adb.show();
-        } else if (lngEditTextNumberDecimal.getText().toString().length() <= 0) {
-            adb.setTitle(R.string.error);
-            adb.setMessage("Координата долготы  не может быть пустой");
-            adb.setNeutralButton(R.string.ok, myClickListener);
-            adb.create();
-            showDialog(DIALOG_EXIT);
-            adb.show();
-        } else if (!checkAddressString(Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())))
-        {
-            adb.setTitle(R.string.error);
-            adb.setMessage("Введенные координаты не удовлетворяют существующему местоположению. Введите корректные координаты");
-            adb.setNeutralButton(R.string.ok, myClickListener);
-            adb.create();
-            showDialog(DIALOG_EXIT);
-            adb.show();
-        } else {
+        if (eventTitlePlainText.getText().toString().length() <= 0)
+            showAlertDialog("Название мероприятия не может быть пустым");
+        else if (eventTitlePlainText.getText().toString().length() >= 50)
+            showAlertDialog("Название мероприятия слишком большое");
+        else if (eventPlacePlainText.getText().toString().length() <= 0)
+            showAlertDialog("Описание мероприятия не может быть пустым");
+        else if (eventPlacePlainText.getText().toString().length() >= 255)
+            showAlertDialog("Описание мероприятия слишком большое");
 
+        else if (latEditTextNumberDecimal.getText().toString().length() <= 0)
+            showAlertDialog("Координата широты не может быть пустой");
+        else if (lngEditTextNumberDecimal.getText().toString().length() <= 0)
+            showAlertDialog("Координата долготы не может быть пустой");
+        else if (!checkAddressString(Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())))
+            showAlertDialog("Введенные координаты не удовлетворяют существующему местоположению. Введите корректные координаты");
+        else if (dateText.getText().toString().length() <= 0)
+            showAlertDialog("Дата не может быть невыбранной");
+        else {
             timePicker = (TimePicker) findViewById(R.id.simpleTimePicker);
             timePicker.setIs24HourView(true); // used to display 24 mode
 
-            String month = String.valueOf(datePicker.getMonth() + 1);
-            String day = String.valueOf(datePicker.getDayOfMonth());
-            String year = String.valueOf(datePicker.getYear());
-
-            //timePicker.setCurrentMinute();
             String hour = String.valueOf(timePicker.getHour());
             String minute = String.valueOf(timePicker.getMinute());
-            if (day.length() == 1) {
-                day = "0" + day;
-            }
-            if (month.length() == 1) {
-                month = "0" + month;
-            }
-
-
-
-            String stringDate = String.format("%s-%s-%s %s:%s:%s", year, month, day, hour, minute, "00");
 
             APIHandler.addEvent(new EventPojo(-1, eventTitlePlainText.getText().toString(), eventPlacePlainText.getText().toString(),
-                    stringDate, Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())));
+                    dateText.getText().toString(), Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())));
             eventTitlePlainText.setText("");
             eventPlacePlainText.setText("");
             latEditTextNumberDecimal.setText("");
@@ -222,6 +186,4 @@ public class AddEventActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("Нет", null).show();
     }
-
-
 }

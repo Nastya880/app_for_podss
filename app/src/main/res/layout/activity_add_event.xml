@@ -71,6 +71,18 @@
             android:rotationX="4" />
 
 
+        <EditText
+            android:id="@+id/dateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:hint="Введите дату"
+            android:shadowColor="@color/purple_700" />
+
         <TimePicker
             android:id="@+id/simpleTimePicker"
             android:layout_width="match_parent"
@@ -79,38 +91,6 @@
             android:background="#F2F0F0F8"
             android:padding="20dp"
             android:timePickerMode="spinner" />
-
-        <DatePicker
-            android:id="@+id/datePicker"
-            style="@android:style/Widget.DatePicker"
-            android:layout_width="match_parent"
-            android:layout_height="149dp"
-            android:layout_below="@+id/button"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="10dp"
-            android:addStatesFromChildren="true"
-            android:background="@color/blue_light"
-            android:backgroundTint="#F3F6F8"
-            android:calendarTextColor="@color/purple_700"
-            android:datePickerMode="spinner"
-            android:dayOfWeekBackground="@color/blue_dark"
-            android:dayOfWeekTextAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:foregroundTint="#D4F1FF"
-            android:foregroundTintMode="screen"
-            android:headerBackground="#A9CCE8"
-            android:headerDayOfMonthTextAppearance="@style/TextAppearance.AppCompat.Small"
-            android:headerMonthTextAppearance="@style/TextAppearance.AppCompat.Small"
-            android:headerYearTextAppearance="@style/TextAppearance.AppCompat.Small"
-            android:soundEffectsEnabled="true"
-            android:spinnersShown="true"
-            android:splitMotionEvents="true"
-            android:visibility="visible"
-            android:yearListItemTextAppearance="@style/TextAppearance.AppCompat.Display1"
-            android:yearListSelectorColor="@color/blue_light"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:layout_editor_absoluteY="463dp" />
 
     </LinearLayout>
 

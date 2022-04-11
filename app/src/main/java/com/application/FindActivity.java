@@ -136,6 +136,8 @@ public class FindActivity extends AppCompatActivity {
 
     public void setEventFindFlag(View view) {
         flag = false;
+        costTextView.setVisibility(View.GONE);
+        costSeekBar.setVisibility(View.GONE);
         costSeekBar.setEnabled(false);
         changeSelect();
         refreshList();
