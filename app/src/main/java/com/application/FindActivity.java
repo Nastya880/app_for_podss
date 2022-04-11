@@ -130,6 +130,7 @@ public class FindActivity extends AppCompatActivity {
     public void setStudioFindFlag(View view) {
         flag = true;
         costSeekBar.setEnabled(true);
+        costSeekBar.setVisibility(View.VISIBLE);
         changeSelect();
         refreshList();
     }

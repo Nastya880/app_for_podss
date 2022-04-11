@@ -50,6 +50,11 @@ public class AddEventActivity extends AppCompatActivity {
     final Calendar calendar = Calendar.getInstance();
 
 
+    int DIALOG_TIME = 1;
+    int myHour = 14;
+    int myMinute = 35;
+    TextView tvTime;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +63,7 @@ public class AddEventActivity extends AppCompatActivity {
         eventPlacePlainText = findViewById(R.id.eventPlacePlainText);
         latEditTextNumberDecimal = findViewById(R.id.latEditTextNumberDecimal);
         lngEditTextNumberDecimal = findViewById(R.id.lngEditTextNumberDecimal);
+        tvTime = (TextView) findViewById(R.id.timeText);
 
         dateText=(EditText) findViewById(R.id.dateText);
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -88,6 +94,27 @@ public class AddEventActivity extends AppCompatActivity {
 
         dateText.setText(dateFormat.format(calendar.getTime()));
     }
+
+
+    public void onclicktime(View view) {
+        showDialog(DIALOG_TIME);
+    }
+
+    protected Dialog onCreateDialog(int id) {
+        if (id == DIALOG_TIME) {
+            TimePickerDialog tpd = new TimePickerDialog(this, myCallBack, myHour, myMinute, true);
+            return tpd;
+        }
+        return super.onCreateDialog(id);
+    }
+
+    TimePickerDialog.OnTimeSetListener myCallBack = new TimePickerDialog.OnTimeSetListener() {
+        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+            tvTime.setText(hourOfDay + ":" + minute);
+        }
+    };
+
+
 
     private boolean checkAddressString(double LATITUDE, double LONGITUDE) {
         String strAdd = "";
@@ -125,13 +152,10 @@ public class AddEventActivity extends AppCompatActivity {
         adb.create();
         showDialog(DIALOG_EXIT);
         adb.show();
+
     }
 
     public void addEvent(View view) {
-
-        final int DIALOG_EXIT = 1;
-        AlertDialog.Builder adb = new AlertDialog.Builder(this);
-
         if (eventTitlePlainText.getText().toString().length() <= 0)
             showAlertDialog("Название мероприятия не может быть пустым");
         else if (eventTitlePlainText.getText().toString().length() >= 50)
@@ -150,17 +174,10 @@ public class AddEventActivity extends AppCompatActivity {
         else if (dateText.getText().toString().length() <= 0)
             showAlertDialog("Дата не может быть невыбранной");
         else {
-            timePicker = (TimePicker) findViewById(R.id.simpleTimePicker);
-            timePicker.setIs24HourView(true); // used to display 24 mode
-
-            String hour = String.valueOf(timePicker.getHour());
-            String minute = String.valueOf(timePicker.getMinute());
+            String stringDate = String.format("%s %s:00",dateText.getText().toString(), tvTime.getText().toString());
 
             APIHandler.addEvent(new EventPojo(-1, eventTitlePlainText.getText().toString(), eventPlacePlainText.getText().toString(),
-                    dateText.getText().toString(), Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())));
-            eventTitlePlainText.setText("");
-            eventPlacePlainText.setText("");
-            latEditTextNumberDecimal.setText("");
+                    stringDate, Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())));
 
             Intent intent = new Intent(this, MessageAddEventActivity.class);
             startActivity(intent);
