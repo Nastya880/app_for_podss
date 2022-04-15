@@ -87,13 +87,24 @@ public class StudioPojo extends Pojo {
 
     @Override
     public String toString() {
-        return "StudioPojo{" +
+        return
                 "id=" + id +
-                ", place='" + place + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", type='" + type + '\'' +
-                ", avgPrice=" + avgPrice +
-                '}';
+                ",\nместо = " + place  +
+                ",\nназвание = " + name +
+                ",\nописание = " + description  +
+                ",\nтип = " + type  +
+                ",\nстоимость = " + avgPrice;
     }
 }
+//    @Override
+//    public String toString() {
+//        return "StudioPojo{" +
+//                "id=" + id +
+//                ", place='" + place + '\'' +
+//                ", name='" + name + '\'' +
+//                ", description='" + description + '\'' +
+//                ", type='" + type + '\'' +
+//                ", avgPrice=" + avgPrice +
+//                '}';
+//    }
+//}

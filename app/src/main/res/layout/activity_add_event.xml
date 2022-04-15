@@ -95,7 +95,7 @@
             android:focusable="false"
             android:focusableInTouchMode="false"
             android:hint="Введите время"
-            android:onClick="onclicktime" />
+             />
 
 
     </LinearLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Application</string>
+    <string name="app_name">ОДС</string>
     <string name="addButton">Добавить мероприятие</string>
     <string name="findButton">Найти</string>
     <string name="authorizeStatusTextView">TextView</string>

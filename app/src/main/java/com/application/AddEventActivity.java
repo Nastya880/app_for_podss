@@ -44,15 +44,15 @@ public class AddEventActivity extends AppCompatActivity {
     EditText eventPlacePlainText;
     EditText latEditTextNumberDecimal;
     EditText lngEditTextNumberDecimal;
-    TimePicker timePicker;
+    //TimePicker timePicker;
 
     EditText dateText;
     final Calendar calendar = Calendar.getInstance();
 
 
     int DIALOG_TIME = 1;
-    int myHour = 14;
-    int myMinute = 35;
+    int myHour = 10;
+    int myMinute = 00;
     TextView tvTime;
 
     @Override
@@ -65,6 +65,21 @@ public class AddEventActivity extends AppCompatActivity {
         lngEditTextNumberDecimal = findViewById(R.id.lngEditTextNumberDecimal);
         tvTime = (TextView) findViewById(R.id.timeText);
 
+        TimePickerDialog.OnTimeSetListener myCallBack = new TimePickerDialog.OnTimeSetListener() {
+
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                tvTime.setText(hourOfDay + ":" + minute);
+               // updateTime();
+            }
+        };
+        tvTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                TimePickerDialog dialog = new TimePickerDialog(AddEventActivity.this, myCallBack, myHour, myMinute, true);
+                dialog.show();
+            }
+        });
+
         dateText=(EditText) findViewById(R.id.dateText);
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -72,7 +87,6 @@ public class AddEventActivity extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH,month);
                 calendar.set(Calendar.DAY_OF_MONTH,day);
-
                 updateLabel();
             }
         };
@@ -88,6 +102,7 @@ public class AddEventActivity extends AppCompatActivity {
         });
     }
 
+
     private void updateLabel(){
         String myFormat="yyyy-MM-dd";
         SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.US);
@@ -96,23 +111,23 @@ public class AddEventActivity extends AppCompatActivity {
     }
 
 
-    public void onclicktime(View view) {
-        showDialog(DIALOG_TIME);
-    }
+//    public void onclicktime(View view) {
+//        showDialog(DIALOG_TIME);
+//    }
 
-    protected Dialog onCreateDialog(int id) {
-        if (id == DIALOG_TIME) {
-            TimePickerDialog tpd = new TimePickerDialog(this, myCallBack, myHour, myMinute, true);
-            return tpd;
-        }
-        return super.onCreateDialog(id);
-    }
-
-    TimePickerDialog.OnTimeSetListener myCallBack = new TimePickerDialog.OnTimeSetListener() {
-        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-            tvTime.setText(hourOfDay + ":" + minute);
-        }
-    };
+//    protected Dialog onCreateDialog(int id) {
+//        if (id == DIALOG_TIME) {
+//            TimePickerDialog tpd = new TimePickerDialog(this, myCallBack, myHour, myMinute, true);
+//            return tpd;
+//        }
+//        return super.onCreateDialog(id);
+//    }
+//
+//    TimePickerDialog.OnTimeSetListener myCallBack = new TimePickerDialog.OnTimeSetListener() {
+//        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//            tvTime.setText(hourOfDay + ":" + minute);
+//        }
+//    };
 
 
 
@@ -173,6 +188,8 @@ public class AddEventActivity extends AppCompatActivity {
             showAlertDialog("Введенные координаты не удовлетворяют существующему местоположению. Введите корректные координаты");
         else if (dateText.getText().toString().length() <= 0)
             showAlertDialog("Дата не может быть невыбранной");
+        else if (tvTime.getText().toString().length() <= 0)
+            showAlertDialog("Время не может быть невыбранным");
         else {
             String stringDate = String.format("%s %s:00",dateText.getText().toString(), tvTime.getText().toString());
 
