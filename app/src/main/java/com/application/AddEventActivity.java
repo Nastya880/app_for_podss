@@ -1,38 +1,23 @@
 package com.application;
 
-import static android.graphics.Color.BLUE;
-
-import static java.util.Locale.*;
-
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.app.TimePickerDialog;
-import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Color;
-import android.graphics.Typeface;
 import android.location.Address;
 import android.location.Geocoder;
-import android.os.Build;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.text.format.DateUtils;
-import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
-import java.lang.reflect.Field;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -44,13 +29,10 @@ public class AddEventActivity extends AppCompatActivity {
     EditText eventPlacePlainText;
     EditText latEditTextNumberDecimal;
     EditText lngEditTextNumberDecimal;
-    //TimePicker timePicker;
 
     EditText dateText;
     final Calendar calendar = Calendar.getInstance();
 
-
-    int DIALOG_TIME = 1;
     int myHour = 10;
     int myMinute = 00;
     TextView tvTime;
@@ -110,27 +92,6 @@ public class AddEventActivity extends AppCompatActivity {
         dateText.setText(dateFormat.format(calendar.getTime()));
     }
 
-
-//    public void onclicktime(View view) {
-//        showDialog(DIALOG_TIME);
-//    }
-
-//    protected Dialog onCreateDialog(int id) {
-//        if (id == DIALOG_TIME) {
-//            TimePickerDialog tpd = new TimePickerDialog(this, myCallBack, myHour, myMinute, true);
-//            return tpd;
-//        }
-//        return super.onCreateDialog(id);
-//    }
-//
-//    TimePickerDialog.OnTimeSetListener myCallBack = new TimePickerDialog.OnTimeSetListener() {
-//        public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//            tvTime.setText(hourOfDay + ":" + minute);
-//        }
-//    };
-
-
-
     private boolean checkAddressString(double LATITUDE, double LONGITUDE) {
         String strAdd = "";
         Geocoder geocoder = new Geocoder(this, Locale.getDefault());
@@ -167,29 +128,40 @@ public class AddEventActivity extends AppCompatActivity {
         adb.create();
         showDialog(DIALOG_EXIT);
         adb.show();
+    }
 
+    protected boolean isOnline() {
+        String cs = Context.CONNECTIVITY_SERVICE;
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(cs);
+        if (cm.getActiveNetworkInfo() == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void addEvent(View view) {
         if (eventTitlePlainText.getText().toString().length() <= 0)
-            showAlertDialog("Название мероприятия не может быть пустым");
+            showAlertDialog("Введите название мероприятия");
         else if (eventTitlePlainText.getText().toString().length() >= 50)
             showAlertDialog("Название мероприятия слишком большое");
         else if (eventPlacePlainText.getText().toString().length() <= 0)
-            showAlertDialog("Описание мероприятия не может быть пустым");
+            showAlertDialog("Введите описания мероприятия");
         else if (eventPlacePlainText.getText().toString().length() >= 255)
             showAlertDialog("Описание мероприятия слишком большое");
 
         else if (latEditTextNumberDecimal.getText().toString().length() <= 0)
-            showAlertDialog("Координата широты не может быть пустой");
+            showAlertDialog("Введите координату широты");
         else if (lngEditTextNumberDecimal.getText().toString().length() <= 0)
-            showAlertDialog("Координата долготы не может быть пустой");
+            showAlertDialog("Введите координату долготы");
         else if (!checkAddressString(Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())))
             showAlertDialog("Введенные координаты не удовлетворяют существующему местоположению. Введите корректные координаты");
         else if (dateText.getText().toString().length() <= 0)
-            showAlertDialog("Дата не может быть невыбранной");
+            showAlertDialog("Выберите дату проведения мероприятия");
         else if (tvTime.getText().toString().length() <= 0)
-            showAlertDialog("Время не может быть невыбранным");
+            showAlertDialog("Выберите время проведения мероприятия");
+        else if (!isOnline())
+            showAlertDialog("Проверьте подключение к интернету");
         else {
             String stringDate = String.format("%s %s:00",dateText.getText().toString(), tvTime.getText().toString());
 

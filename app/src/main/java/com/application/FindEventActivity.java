@@ -1,8 +1,10 @@
 package com.application;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -69,6 +71,18 @@ public class FindEventActivity extends Activity {
             }
         });
 
+        list.setOnScrollListener(new AbsListView.OnScrollListener() {
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                Log.d(LOG_TAG, "scrollState = " + scrollState);
+            }
+
+            public void onScroll(AbsListView view, int firstVisibleItem,
+                                 int visibleItemCount, int totalItemCount) {
+                Log.d(LOG_TAG, "scroll: firstVisibleItem = " + firstVisibleItem
+                        + ", visibleItemCount" + visibleItemCount
+                        + ", totalItemCount" + totalItemCount);
+            }
+        });
 
         EditText searchDataEditText = (EditText) findViewById(R.id.searchDataNameEventEditText);
         searchDataEditText.addTextChangedListener(new TextWatcher() {
@@ -89,6 +103,16 @@ public class FindEventActivity extends Activity {
             }
         });
         refreshList();
+    }
+
+    protected boolean isOnline() {
+        String cs = Context.CONNECTIVITY_SERVICE;
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(cs);
+        if (cm.getActiveNetworkInfo() == null) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     public void showMaps(int index) {

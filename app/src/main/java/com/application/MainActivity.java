@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
 import android.app.SearchManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -57,53 +59,46 @@ public class MainActivity extends AppCompatActivity {
 
     Dialog dialog;
 
-
-    @Override
-    protected Dialog onCreateDialog(int id) {
-        if (id == DIALOG) {
-            //Log.d(LOG_TAG, "Create");
-            AlertDialog.Builder adb = new AlertDialog.Builder(this);
-            adb.setTitle("Информация");
-            adb.setMessage("Приложение разработано в рамках выпускной работы в МИЭТ студенткой группы ПИН-41 Макеевой Анастасией");
-            adb.setPositiveButton("OK", null);
-            dialog = adb.create();
-
-            // обработчик отображения
-            dialog.setOnShowListener(new DialogInterface.OnShowListener() {
-                public void onShow(DialogInterface dialog) {
-                    //   Log.d(LOG_TAG, "Show");
-                }
-            });
-
-            // обработчик отмены
-            dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                public void onCancel(DialogInterface dialog) {
-                    //   Log.d(LOG_TAG, "Cancel");
-                }
-            });
-
-            // обработчик закрытия
-            dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
-                public void onDismiss(DialogInterface dialog) {
-                    //        Log.d(LOG_TAG, "Dismiss");
-                }
-            });
-            return dialog;
-        }
-        return super.onCreateDialog(id);
+    public void info(View view) {
+        showAlertDialog("Приложение разработано в рамках выпускной работы в МИЭТ студенткой группы ПИН-41 Макеевой Анастасией", "Информация");
     }
 
-    public void info(View view) {
-        showDialog(DIALOG);
+    protected boolean isOnline() {
+        String cs = Context.CONNECTIVITY_SERVICE;
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(cs);
+        if (cm.getActiveNetworkInfo() == null)
+            return false;
+        else
+            return true;
     }
 
     public void showFindEventActivity(View view) {
-        Intent intent = new Intent(this, FindEventActivity.class);
-        startActivity(intent);
+        if (!isOnline())
+            showAlertDialog("Проверьте подключение к интернету", "ОШИБКА");
+        else {
+            Intent intent = new Intent(this, FindEventActivity.class);
+            startActivity(intent);
+        }
+    }
+    public void showAlertDialog(String message, String title)
+    {
+        final int DIALOG_EXIT = 1;
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+
+        adb.setTitle(title);
+        adb.setMessage(message);
+        adb.setNeutralButton(R.string.ok, null);
+        adb.create();
+        showDialog(DIALOG_EXIT);
+        adb.show();
     }
 
     public void showFindStudioActivity(View view) {
-        Intent intent = new Intent(this, FindStudioActivity.class);
-        startActivity(intent);
+        if (!isOnline())
+            showAlertDialog("Проверьте подключение к интернету", "ОШИБКА");
+        else {
+            Intent intent = new Intent(this, FindStudioActivity.class);
+            startActivity(intent);
+        }
     }
 }
