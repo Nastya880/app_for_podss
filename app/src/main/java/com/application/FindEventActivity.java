@@ -19,9 +19,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AlertDialog;
-
 import java.util.ArrayList;
 
 public class FindEventActivity extends Activity {
@@ -54,20 +52,6 @@ public class FindEventActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 showMaps(position);
-            }
-        });
-
-
-        list.setOnScrollListener(new AbsListView.OnScrollListener() {
-            public void onScrollStateChanged(AbsListView view, int scrollState) {
-                 Log.d(LOG_TAG, "scrollState = " + scrollState);
-            }
-
-            public void onScroll(AbsListView view, int firstVisibleItem,
-                                 int visibleItemCount, int totalItemCount) {
-                Log.d(LOG_TAG, "scroll: firstVisibleItem = " + firstVisibleItem
-                        + ", visibleItemCount" + visibleItemCount
-                        + ", totalItemCount" + totalItemCount);
             }
         });
 
@@ -176,3 +160,6 @@ public class FindEventActivity extends Activity {
         startActivity(intent);
     }
 }
+
+
+

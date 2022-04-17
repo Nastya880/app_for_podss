@@ -33,8 +33,6 @@ public class AddEventActivity extends AppCompatActivity {
     EditText dateText;
     final Calendar calendar = Calendar.getInstance();
 
-    int myHour = 10;
-    int myMinute = 00;
     TextView tvTime;
 
     @Override
@@ -50,14 +48,20 @@ public class AddEventActivity extends AppCompatActivity {
         TimePickerDialog.OnTimeSetListener myCallBack = new TimePickerDialog.OnTimeSetListener() {
 
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                tvTime.setText(hourOfDay + ":" + minute);
-                // updateTime();
+               if (hourOfDay < 10 & minute < 10)
+                   tvTime.setText("0" + hourOfDay + ":0" + minute);
+               else if (hourOfDay < 10)
+                   tvTime.setText("0" + hourOfDay + ":" + minute);
+               else if (minute < 10)
+                   tvTime.setText(hourOfDay + ":0" + minute);
+               else
+                   tvTime.setText(hourOfDay + ":" + minute);
             }
         };
         tvTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                TimePickerDialog dialog = new TimePickerDialog(AddEventActivity.this, myCallBack, myHour, myMinute, true);
+                TimePickerDialog dialog = new TimePickerDialog(AddEventActivity.this, myCallBack, calendar.getTime().getHours(),calendar.getTime().getMinutes(), true);
                 dialog.show();
             }
         });
@@ -83,7 +87,6 @@ public class AddEventActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void updateLabel(){
         String myFormat="yyyy-MM-dd";

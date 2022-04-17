@@ -3,8 +3,6 @@ package com.application;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.time.LocalDateTime;
-
 public class EventPojo extends Pojo {
     private Integer id;
     private String name;

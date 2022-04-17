@@ -4,19 +4,13 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
-
-import com.application.databinding.ActivityFindStudioBinding;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,11 +47,6 @@ public class MainActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("Нет", null).show();
     }
-
-    final String LOG_TAG = "myLogs";
-    final int DIALOG = 1;
-
-    Dialog dialog;
 
     public void info(View view) {
         showAlertDialog("Приложение разработано в рамках выпускной работы в МИЭТ студенткой группы ПИН-41 Макеевой Анастасией", "Информация");
