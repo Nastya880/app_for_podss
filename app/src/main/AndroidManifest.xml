@@ -37,9 +37,6 @@
             android:name=".AddEventActivity"
             android:exported="true" />
         <activity
-            android:name=".FindActivity"
-            android:exported="true" />
-        <activity
             android:name=".LoginActivity"
             android:exported="true" />
         <activity
@@ -52,6 +49,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".MessageAddEventActivity" />
+        <activity android:name=".FindStudioActivity" />
+        <activity android:name=".FindEventActivity" />
     </application>
 
 </manifest>

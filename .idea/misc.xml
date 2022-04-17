@@ -5,21 +5,41 @@
       <map>
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_bookmark_added_black_24dp.xml" value="0.1" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_calendar.xml" value="0.108" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_close_black_24dp.xml" value="0.108" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_exit_to_app_black_24dp.xml" value="0.1725" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_geography.xml" value="0.108" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1725" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_home_black_24dp__1_.xml" value="0.108" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_launcher_background.xml" value="0.13" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_menu_camera.xml" value="0.108" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_menu_gallery.xml" value="0.108" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_menu_slideshow.xml" value="0.108" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_phone_black_24dp.xml" value="0.1725" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_premium_icon_find_2294149.xml" value="0.108" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/ic_search_black_24dp.xml" value="0.1725" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/drawable/side_nav_bar.xml" value="0.108" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/activity_add_description_event.xml" value="0.1796875" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/activity_add_event.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/activity_dialog.xml" value="0.1" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/activity_find.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/activity_find_event.xml" value="0.125" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/activity_find_studio.xml" value="0.22" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/activity_login.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/activity_main.xml" value="0.16666666666666666" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/activity_maps.xml" value="0.1796875" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/activity_message_add_event.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/app_bar_main.xml" value="0.1015625" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/content_main.xml" value="0.1015625" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/dialog_view.xml" value="0.1" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/fragment_gallery.xml" value="0.1796875" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/fragment_home.xml" value="0.1796875" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/fragment_slideshow.xml" value="0.1015625" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/header_navigation_drawer.xml" value="0.1015625" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/layout/nav_header_bar.xml" value="0.1015625" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/menu/main.xml" value="0.1" />
+        <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/menu/navigation_drawer.xml" value="0.1015625" />
         <entry key="..\:/Users/Nastya/Desktop/project/app/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
         <entry key="..\:/Users/Nastya/Desktop/project1/proj1/app/app/src/main/res/layout/activity_add_event.xml" value="0.1796875" />
         <entry key="..\:/Users/Nastya/Desktop/project1/proj1/app/app/src/main/res/layout/activity_find.xml" value="0.1796875" />

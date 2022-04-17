@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back_picture"
-    tools:context=".FindActivity">
+    tools:context=".FindStudioActivity">
 
     <Button
         android:id="@+id/button"
@@ -34,38 +34,6 @@
         app:layout_constraintVertical_bias="0.47000003"
         tools:ignore="OnClick" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="318dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="80dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/findStudioButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="12dp"
-            android:layout_weight="1"
-            android:backgroundTint="@color/blue_light"
-            android:onClick="setStudioFindFlag"
-            android:text="         Студии     "
-            android:textSize="16sp" />
-
-        <Button
-            android:id="@+id/findEventButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:backgroundTint="#75B7EC"
-            android:onClick="setEventFindFlag"
-            android:text="Мероприятия"
-            android:textSize="16sp" />
-    </LinearLayout>
-
     <View
         android:id="@+id/divider3"
         android:layout_width="409dp"
@@ -80,17 +48,21 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <LinearLayout
+        android:id="@+id/linearLayout4"
         android:layout_width="306dp"
         android:layout_height="110dp"
-        android:layout_marginTop="156dp"
+        android:layout_marginTop="100dp"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 

@@ -1,8 +1,6 @@
 package com.application;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,24 +15,22 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
-public class FindActivity extends AppCompatActivity {
+public class FindStudioActivity extends AppCompatActivity {
 
     ArrayAdapter<String> adapter;
     ArrayList<String> listItems = new ArrayList<String>();
 
-    Button findStudioButton;
-    Button findEventButton;
-
     SeekBar costSeekBar;
     TextView costTextView;
-
     ListView list;
 
     boolean flag = true;
 
-    public static ArrayList<EventPojo> events = new ArrayList<>();
     public static ArrayList<StudioPojo> studios = new ArrayList<>();
 
     private String filter = "";
@@ -42,14 +38,12 @@ public class FindActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_find);
+        setContentView(R.layout.activity_find_studio);
         list = (ListView) findViewById(R.id.list);
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
                 listItems);
         list.setAdapter(adapter);
-        findStudioButton = findViewById(R.id.findStudioButton);
-        findEventButton = findViewById(R.id.findEventButton);
         costSeekBar = findViewById(R.id.costSeekBar);
         costTextView = findViewById(R.id.costTextView);
 
@@ -61,7 +55,6 @@ public class FindActivity extends AppCompatActivity {
                 showMaps(position);
             }
         });
-
 
         costSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -101,53 +94,26 @@ public class FindActivity extends AppCompatActivity {
                 refreshList();
             }
         });
-
-        changeSelect();
         refreshList();
     }
 
     public void showMaps(int index) {
-        if(flag){
-            MapsActivity.currentPojo = studios.get(index);
-        }else{
-            MapsActivity.currentPojo = events.get(index);
-        }
+        MapsActivity.currentPojo = studios.get(index);
 
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
-    }
-
-    public void changeSelect() {
-        if (flag) {
-            findStudioButton.setEnabled(false);
-            findEventButton.setEnabled(true);
-        } else {
-            findStudioButton.setEnabled(true);
-            findEventButton.setEnabled(false);
-        }
     }
 
     public void setStudioFindFlag(View view) {
         flag = true;
         costSeekBar.setEnabled(true);
         costSeekBar.setVisibility(View.VISIBLE);
-        changeSelect();
-        refreshList();
-    }
 
-    public void setEventFindFlag(View view) {
-        flag = false;
-        costTextView.setVisibility(View.GONE);
-        costSeekBar.setVisibility(View.GONE);
-        costSeekBar.setEnabled(false);
-        changeSelect();
         refreshList();
     }
 
     public void fillData() {
-        if (events.size() == 0) {
-            events = APIHandler.getEvents();
-        }
+
         if (studios.size() == 0) {
             studios = APIHandler.getStudios();
         }
@@ -184,12 +150,7 @@ public class FindActivity extends AppCompatActivity {
                     adapter.add(studioPojo.toString());
                 }
             }
-        } else {
-            for (EventPojo event : events) {
-                if (searchFilter(event)) {
-                    adapter.add(event.toString());
-                }
-            }
+
         }
     }
 

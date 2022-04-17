@@ -69,7 +69,7 @@ public class AddEventActivity extends AppCompatActivity {
 
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                 tvTime.setText(hourOfDay + ":" + minute);
-               // updateTime();
+                // updateTime();
             }
         };
         tvTime.setOnClickListener(new View.OnClickListener() {

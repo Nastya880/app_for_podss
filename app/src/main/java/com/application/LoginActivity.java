@@ -28,7 +28,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private boolean checkCorrect(String phoneString) {
         //String phoneNumber = "+7(9##) ###-##-##";
-       // String text = String.valueOf( android.telephony.PhoneNumberUtils.formatNumber(phoneNumber) );
+        // String text = String.valueOf( android.telephony.PhoneNumberUtils.formatNumber(phoneNumber) );
         //formatted: 123-456-7890
         //phoneEditText.setText(text);
         //set editText text equal to new formatted number
@@ -71,10 +71,10 @@ public class LoginActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .setPositiveButton("да", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                                Intent i = new Intent(Intent.ACTION_MAIN);
-                                i.addCategory(Intent.CATEGORY_HOME);
-                                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                                startActivity(i);
+                        Intent i = new Intent(Intent.ACTION_MAIN);
+                        i.addCategory(Intent.CATEGORY_HOME);
+                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(i);
                     }
                 })
                 .setNegativeButton("Нет", null).show();

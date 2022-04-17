@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
+import com.application.databinding.ActivityFindStudioBinding;
+
 public class MainActivity extends AppCompatActivity {
 
     public static boolean authFlag = false;
@@ -34,12 +36,6 @@ public class MainActivity extends AppCompatActivity {
         }
         startActivity(intent);
     }
-
-    public void showFindActivity(View view) {
-        Intent intent = new Intent(this, FindActivity.class);
-        startActivity(intent);
-    }
-
 
     public void exitApp(View view) {
         new AlertDialog.Builder(this)
@@ -75,21 +71,21 @@ public class MainActivity extends AppCompatActivity {
             // обработчик отображения
             dialog.setOnShowListener(new DialogInterface.OnShowListener() {
                 public void onShow(DialogInterface dialog) {
-                 //   Log.d(LOG_TAG, "Show");
+                    //   Log.d(LOG_TAG, "Show");
                 }
             });
 
             // обработчик отмены
             dialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                 public void onCancel(DialogInterface dialog) {
-                 //   Log.d(LOG_TAG, "Cancel");
+                    //   Log.d(LOG_TAG, "Cancel");
                 }
             });
 
             // обработчик закрытия
             dialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                 public void onDismiss(DialogInterface dialog) {
-            //        Log.d(LOG_TAG, "Dismiss");
+                    //        Log.d(LOG_TAG, "Dismiss");
                 }
             });
             return dialog;
@@ -99,5 +95,15 @@ public class MainActivity extends AppCompatActivity {
 
     public void info(View view) {
         showDialog(DIALOG);
+    }
+
+    public void showFindEventActivity(View view) {
+        Intent intent = new Intent(this, FindEventActivity.class);
+        startActivity(intent);
+    }
+
+    public void showFindStudioActivity(View view) {
+        Intent intent = new Intent(this, FindStudioActivity.class);
+        startActivity(intent);
     }
 }

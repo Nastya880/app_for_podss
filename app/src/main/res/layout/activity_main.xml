@@ -7,6 +7,7 @@
     android:background="@drawable/back_picture"
     tools:context=".MainActivity">
 
+
     <LinearLayout
         android:layout_width="259dp"
         android:layout_height="433dp"
@@ -29,13 +30,23 @@
             android:textSize="22sp" />
 
         <Button
-            android:id="@+id/findButton"
+            android:id="@+id/findStudioMainButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/blue_light"
-            android:drawableLeft="@drawable/ic_search_black_24dp"
-            android:onClick="showFindActivity"
-            android:text="@string/findButton"
+            android:drawableLeft="@drawable/ic_geography"
+            android:onClick="showFindStudioActivity"
+            android:text="@string/findStudioButton"
+            android:textSize="22sp" />
+
+        <Button
+            android:id="@+id/findEventButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue_light"
+            android:drawableLeft="@drawable/ic_calendar"
+            android:onClick="showFindEventActivity"
+            android:text="@string/findEventButton"
             android:textSize="22sp" />
 
     </LinearLayout>
