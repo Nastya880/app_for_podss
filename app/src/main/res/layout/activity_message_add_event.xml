@@ -19,9 +19,11 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue_light"
+                android:background="@color/blue_dark"
                 app:subtitleTextColor="#0A0A0A"
-                app:titleTextColor="#111111" />
+                app:title="ОргДвиж"
+                app:titleMargin="15dp"
+                app:titleTextColor="@color/white" />
 
 
             <TextView
@@ -43,17 +45,17 @@
                 android:id="@+id/addNewEventButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="80dp"
                 android:layout_marginRight="20dp"
-                android:backgroundTint="@color/blue_light"
+                android:backgroundTint="@color/pink_light"
+                android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"
+                android:onClick="addNewButton"
                 android:text="Добавить новое мероприятие"
                 android:textSize="20sp"
-                android:onClick="addNewButton"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/infoEventAdd"
-                android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"/>
+                app:layout_constraintTop_toBottomOf="@+id/infoEventAdd" />
 
 
         </LinearLayout>

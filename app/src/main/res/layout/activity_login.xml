@@ -14,17 +14,46 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#F7FFFFFF"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:tooltipText="Главная">
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/blue_dark"
-                android:text="Главная"
                 app:subtitleTextColor="#0A0A0A"
+                app:title="Авторизация"
+                app:titleMargin="15dp"
                 app:titleTextColor="@color/white" />
 
+
+            <TextView
+                android:id="@+id/loginInfoText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif"
+                android:paddingTop="50dp"
+                android:text="Введите ваш номер телефона (12 сиволов)"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#031245"
+                android:textSize="26sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/loginInfoText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif"
+                android:layout_marginTop="20dp"
+                android:text=" Формат: +7 (9ХХ) ХХХ-ХХ-ХХ"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="#031245"
+                android:textSize="22sp"
+                android:textStyle="normal" />
 
             <LinearLayout
                 android:id="@+id/linearLayout2"
@@ -33,32 +62,7 @@
                 android:orientation="vertical"
                 android:padding="25dp"
                 android:layout_gravity="center"
-                android:gravity="center">
-
-                <TextView
-                    android:id="@+id/loginInfoText2"
-                    android:layout_width="match_parent"
-                    android:layout_height="77dp"
-                    android:layout_gravity="center"
-                    android:fontFamily="sans-serif"
-                    android:text="Введите ваш номер телефона (12 сиволов)"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textColor="#031245"
-                    android:textSize="22sp"
-                    android:textStyle="normal" />
-
-                <TextView
-                    android:id="@+id/loginInfoText"
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:fontFamily="sans-serif"
-                    android:text=" Формат: +7 (9ХХ) ХХХ-ХХ-ХХ"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textColor="#031245"
-                    android:textSize="19sp"
-                    android:textStyle="normal" />
+                android:layout_marginTop="50dp">
 
                 <EditText
                     android:id="@+id/editTextPhone"
@@ -66,8 +70,7 @@
                     android:layout_height="wrap_content"
                     android:autofillHints=""
                     android:hint="+79XXXXXXXXX"
-                    android:textSize="22dp"
-                    android:ems="10"
+                    android:textSize="24dp"
                     android:inputType="phone"
                     android:textColor="#01052C" />
 
@@ -75,7 +78,8 @@
                     android:id="@+id/buttonInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/blue_light"
+                    android:layout_marginTop="10dp"
+                    android:backgroundTint="@color/pink_light"
                     android:onClick="click"
                     android:text="@string/loginButton"
                     android:textSize="22sp" />

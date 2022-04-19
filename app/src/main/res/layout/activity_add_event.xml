@@ -25,9 +25,11 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue_light"
+                android:background="@color/blue_dark"
                 app:subtitleTextColor="#0A0A0A"
-                app:titleTextColor="#111111" />
+                app:title="Добавление мероприятия"
+                app:titleMargin="15dp"
+                app:titleTextColor="@color/white" />
 
 
             <LinearLayout
@@ -114,12 +116,11 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:layout_marginTop="40dp"
-                android:backgroundTint="@color/blue_light"
+                android:backgroundTint="@color/pink_light"
                 android:onClick="addEvent"
                 android:text="Добавить мероприятие"
                 android:textAlignment="center"
                 android:textAllCaps="true"
-                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                 android:textSize="20sp"
                  />
 

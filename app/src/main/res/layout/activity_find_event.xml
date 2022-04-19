@@ -19,20 +19,22 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue_light"
+                android:background="@color/blue_dark"
                 app:subtitleTextColor="#0A0A0A"
-                app:titleTextColor="#111111" />
+                app:title="Найти мероприятие"
+                app:titleMargin="15dp"
+                app:titleTextColor="@color/white" />
 
 
             <LinearLayout
                 android:id="@+id/linearLayout3"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"
                 android:layout_marginTop="30dp"
+                android:foregroundTint="#8F0303"
                 android:orientation="vertical"
-                >
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
 
                 <EditText
                     android:id="@+id/searchDataNameEventEditText"
@@ -77,7 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:foregroundTint="@color/blue_dark"
         app:headerLayout="@layout/header"
-        app:menu="@menu/drawer_menu">
-    </com.google.android.material.navigation.NavigationView>
+        app:menu="@menu/drawer_menu"></com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

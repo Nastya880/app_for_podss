@@ -26,16 +26,18 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue_light"
+                android:background="@color/blue_dark"
                 app:subtitleTextColor="#0A0A0A"
-                app:titleTextColor="#111111" />
+                app:title="Инструкция"
+                app:titleMargin="15dp"
+                app:titleTextColor="@color/white" />
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Для использования приложения"
-                android:textAlignment="center"
+                android:textColor="@color/black"
                 android:textSize="24sp"
                 android:layout_marginTop="40dp"
                 android:paddingLeft="20dp"

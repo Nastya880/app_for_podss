@@ -23,9 +23,11 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue_light"
+                android:background="@color/blue_dark"
                 app:subtitleTextColor="#0A0A0A"
-                app:titleTextColor="#111111" />
+                app:title="Найти студию"
+                app:titleMargin="15dp"
+                app:titleTextColor="@color/white" />
 
 
             <LinearLayout
