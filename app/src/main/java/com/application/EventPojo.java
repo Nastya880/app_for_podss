@@ -1,21 +1,23 @@
 package com.application;
 
+import android.security.identity.IdentityCredentialStore;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class EventPojo extends Pojo {
     private Integer id;
     private String name;
-    private String place;
+    private String description;
     private String dateTime;
     private Double lat;
     private Double lng;
     private String phone;
 
-    public EventPojo(Integer id, String name, String place, String dateTime, Double lat, Double lng, String phone) {
+    public EventPojo(Integer id, String name, String description, String dateTime, Double lat, Double lng, String phone) {
         this.id = id;
         this.name = name;
-        this.place = place;
+        this.description = description;
         this.dateTime = dateTime;
         this.lat = lat;
         this.lng = lng;
@@ -26,7 +28,7 @@ public class EventPojo extends Pojo {
         JSONObject jo = new JSONObject();
         jo.put("id", id);
         jo.put("name", name);
-        jo.put("place", place);
+        jo.put("description", description);
         jo.put("datetime", dateTime);
         jo.put("lat", lat);
         jo.put("lng", lng);
@@ -54,12 +56,12 @@ public class EventPojo extends Pojo {
         this.name = name;
     }
 
-    public String getPlace() {
-        return place;
+    public String getDescription() {
+        return description;
     }
 
-    public void setPlace(String place) {
-        this.place = place;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDateTime() {
@@ -88,8 +90,8 @@ public class EventPojo extends Pojo {
 
     @Override
     public String toString() {
-        return "название:" + name +
-                ",\nОписание" + place +
-                ",\nвремя:" + dateTime;
+        return "название: " + name +
+                ",\nописание: " + description +
+                ",\nвремя: " + dateTime;
     }
 }

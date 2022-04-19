@@ -147,7 +147,6 @@ public class AddEventActivity extends ParentNavigationActivity{
     public void addEvent(View view) {
         if (eventTitlePlainText.getText().toString().length() <= 0)
             showAlertDialog("Введите название мероприятия");
-            //showAlertDialog(LoginActivity.phoneEditText.getText().toString());
         else if (eventTitlePlainText.getText().toString().length() >= 50)
             showAlertDialog("Название мероприятия слишком большое");
         else if (eventPlacePlainText.getText().toString().length() <= 0)

@@ -27,7 +27,7 @@ public class APIHandler {
         try {
             for (int i = 0; i < jsonArray.get().length(); i++) {
                 JSONObject exploreObject = jsonArray.get().getJSONObject(i);
-                events.add(new EventPojo(exploreObject.getInt("id"), exploreObject.getString("name"), exploreObject.getString("place"), exploreObject.getString("datetime"), exploreObject.getDouble("lat"), exploreObject.getDouble("lng"), exploreObject.getString("phone")));
+                events.add(new EventPojo(exploreObject.getInt("id"), exploreObject.getString("name"), exploreObject.getString("description"), exploreObject.getString("datetime"), exploreObject.getDouble("lat"), exploreObject.getDouble("lng"), exploreObject.getString("phone")));
             }
         } catch (ExecutionException | InterruptedException | JSONException e) {
             e.printStackTrace();
