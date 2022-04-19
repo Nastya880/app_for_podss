@@ -4,8 +4,7 @@
     android:orientation="vertical"
     android:layout_width="300dp"
     android:background="@color/blue_light"
-    android:layout_height="match_parent"
-    tools:context=".ParentNavigationActivity">
+    android:layout_height="match_parent">
 
     <Button
         android:layout_width="110dp"
@@ -13,6 +12,7 @@
         android:textAllCaps="false"
         android:id="@+id/ok"
         android:text="Next"
+        android:onClick="addEvent"
 
         android:textStyle="bold"
         android:textSize="25sp"

@@ -23,7 +23,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class AddEventActivity extends AppCompatActivity {
+public class AddEventActivity extends ParentNavigationActivity{
 
     EditText eventTitlePlainText;
     EditText eventPlacePlainText;
@@ -39,6 +39,7 @@ public class AddEventActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_event);
+        onCreateOption(savedInstanceState);
         eventTitlePlainText = findViewById(R.id.eventTitlePlainText);
         eventPlacePlainText = findViewById(R.id.eventPlacePlainText);
         latEditTextNumberDecimal = findViewById(R.id.latEditTextNumberDecimal);

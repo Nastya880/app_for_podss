@@ -9,11 +9,15 @@
     android:background="#F7FFFFFF"
     android:minWidth="19dp">
 
+
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F7FFFFFF"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            >
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -24,37 +28,16 @@
                 app:titleTextColor="#111111" />
 
 
+
+
             <TextView
-                android:id="@+id/infoEventAdd"
+                android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:paddingRight="20dp"
-                android:paddingLeft="20dp"
-                android:text="Мероприятие успешно добавлено"
-                android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@color/blue_dark"
-                android:textSize="34sp"
-                android:textStyle="bold"
-                 />
-
-            <Button
-                android:id="@+id/addNewEventButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:backgroundTint="@color/blue_light"
-                android:text="Добавить новое мероприятие"
-                android:textSize="20sp"
-                android:onClick="addNewButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/infoEventAdd"
-                android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"/>
-
+                android:text="Приложение ОДС разработано в рамках ВКР"
+                android:textSize="24sp"
+                android:paddingTop="80dp"
+                />
 
         </LinearLayout>
 

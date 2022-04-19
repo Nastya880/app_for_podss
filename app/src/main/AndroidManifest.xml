@@ -51,6 +51,9 @@
         <activity android:name=".MessageAddEventActivity" />
         <activity android:name=".FindStudioActivity" />
         <activity android:name=".FindEventActivity" />
+        <activity android:name=".ParentNavigationActivity" />
+        <activity android:name=".AboutDeveloperActivity" />
+        <activity android:name=".InstructionsActivity" />
     </application>
 
 </manifest>

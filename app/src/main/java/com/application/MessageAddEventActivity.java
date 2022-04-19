@@ -8,12 +8,13 @@ import android.view.View;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MessageAddEventActivity extends AppCompatActivity {
+public class MessageAddEventActivity extends ParentNavigationActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_add_event);
+        onCreateOption(savedInstanceState);
     }
 
     public void lookInfoAddedEvent(View view) {

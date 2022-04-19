@@ -1,146 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back_picture"
-    tools:context=".AddEventActivity">
+    android:id="@+id/drawerLayout"
+    android:fitsSystemWindows="true"
+    android:background="#F7FFFFFF"
+    android:minWidth="19dp">
 
-    <Button
-        android:id="@+id/button7"
-        android:layout_width="426dp"
-        android:layout_height="78dp"
-        android:backgroundTint="@color/blue_dark"
-        android:text="ОДС"
-        android:textColor="#FFFDFD"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout5"
-        android:layout_width="306dp"
-        android:layout_height="450dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="10dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/addEventButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button7"
-        app:layout_constraintVertical_bias="0.51">
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:background="#F7FFFFFF"
+        android:layout_height="wrap_content">
 
 
-        <EditText
-            android:id="@+id/eventTitlePlainText"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Введите название мероприятия"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
+            android:background="#F7FFFFFF"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/eventPlacePlainText"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:ems="10"
-            android:hint="Введите описание"
-            android:inputType="textPersonName"
-            android:minHeight="48dp" />
-
-        <EditText
-            android:id="@+id/latEditTextNumberDecimal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Введите координату широты"
-            android:inputType="numberDecimal"
-            android:shadowColor="@color/purple_700" />
-
-        <EditText
-            android:id="@+id/lngEditTextNumberDecimal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="Введите координату долготы"
-            android:inputType="numberDecimal"
-            android:rotationX="4" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_light"
+                app:subtitleTextColor="#0A0A0A"
+                app:titleTextColor="#111111" />
 
 
-        <EditText
-            android:id="@+id/dateText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:ems="10"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:hint="Введите дату"
-            android:shadowColor="@color/purple_700" />
+            <LinearLayout
+                android:id="@+id/linearLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center|fill"
+                android:paddingTop="80dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
 
-        <EditText
-            android:id="@+id/timeText"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="false"
-            android:cursorVisible="false"
-            android:ems="10"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:hint="Введите время"
-             />
+                android:orientation="vertical"
+                >
 
 
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/eventTitlePlainText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Введите название мероприятия"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp" />
 
-    <Button
-        android:id="@+id/imageExitButton"
-        android:layout_width="64dp"
-        android:layout_height="61dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/ic_close_black_24dp"
-        android:backgroundTint="@color/white"
-        android:clickable="true"
-        android:onClick="exitApp"
-        app:layout_constraintBottom_toBottomOf="@+id/button7"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button7"
-        app:layout_constraintVertical_bias="0.47"
-        tools:ignore="OnClick" />
+                <EditText
+                    android:id="@+id/eventPlacePlainText"
+                    android:layout_width="match_parent"
+                    android:layout_height="70dp"
+                    android:ems="10"
+                    android:hint="Введите описание"
+                    android:inputType="textPersonName"
+                    android:minHeight="48dp" />
 
-    <Button
-        android:id="@+id/addEventButton"
+                <EditText
+                    android:id="@+id/latEditTextNumberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Введите координату широты"
+                    android:inputType="numberDecimal"
+                    android:shadowColor="@color/purple_700" />
+
+                <EditText
+                    android:id="@+id/lngEditTextNumberDecimal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Введите координату долготы"
+                    android:inputType="numberDecimal"
+                    android:rotationX="4" />
+
+
+                <EditText
+                    android:id="@+id/dateText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="Введите дату"
+                    android:shadowColor="@color/purple_700" />
+
+                <EditText
+                    android:id="@+id/timeText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="false"
+                    android:cursorVisible="false"
+                    android:ems="10"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="Введите время" />
+
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/addEventButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="40dp"
+                android:backgroundTint="@color/blue_light"
+                android:onClick="addEvent"
+                android:text="Добавить мероприятие"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textSize="20sp"
+                 />
+
+
+
+        </LinearLayout>
+    </ScrollView>
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_menu"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue_light"
-        android:onClick="addEvent"
-        android:text="Добавить мероприятие"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <Button
-        android:id="@+id/imageMainHomeButton"
-        android:layout_width="75dp"
-        android:layout_height="71dp"
-        android:layout_marginStart="16dp"
-        android:background="@drawable/ic_home_black_24dp__2_"
-        android:backgroundTint="@color/white"
-        android:clickable="true"
-        android:onClick="mainHome"
-        app:layout_constraintBottom_toBottomOf="@+id/button7"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button7"
-        app:layout_constraintVertical_bias="0.625" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/drawer_menu">
+    </com.google.android.material.navigation.NavigationView>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -1,147 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-android:layout_width="fill_parent"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_height="fill_parent"
-tools:context=".MainActivity">
-
-<RelativeLayout
-    android:layout_centerInParent="true"
+<androidx.drawerlayout.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center">
+    android:id="@+id/drawerLayout"
+    android:fitsSystemWindows="true"
+    android:background="#F7FFFFFF"
+    android:minWidth="19dp">
 
-    <LinearLayout
 
-        android:orientation="vertical"
-        android:gravity="center"
-        android:padding="25dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_margin="10dp"
-        app:layout_constraintBottom_toBottomOf="@id/imageExitButton"
-        app:layout_constraintEnd_toEndOf="@id/button3"
-        app:layout_constraintHorizontal_bias="0.559"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.852">
 
-        <Button
-            android:id="@+id/addButton"
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/blue_light"
-            android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"
-            android:onClick="showLoginActivity"
-            android:text="@string/addButton"
-            android:textSize="22sp" />
+            android:background="#F7FFFFFF"
+            android:orientation="vertical">
 
-        <Button
-            android:id="@+id/findStudioMainButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:backgroundTint="@color/blue_light"
-            android:drawableLeft="@drawable/ic_geography"
-            android:gravity="center"
-            android:onClick="showFindStudioActivity"
-            android:text="@string/findStudioButton"
-            android:textSize="22sp" />
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/blue_light"
+                app:subtitleTextColor="#0A0A0A"
+                app:titleTextColor="#111111" />
 
-        <Button
-            android:id="@+id/findEventButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:backgroundTint="@color/blue_light"
-            android:drawableLeft="@drawable/ic_calendar"
-            android:onClick="showFindEventActivity"
-            android:text="@string/findEventButton"
-            android:textSize="22sp" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:padding="25dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
 
-    </LinearLayout>
+                <Button
+                    android:id="@+id/addButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/blue_light"
+                    android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"
+                    android:onClick="showLoginActivity"
+                    android:text="@string/addButton"
+                    android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="420dp"
-        android:layout_height="80dp"
-        android:backgroundTint="@color/blue_dark"
-        android:gravity="center"
-        android:padding="25dp"
-        android:text="ОДС"
-        android:textColor="#FFFDFD"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+                <Button
+                    android:id="@+id/findStudioMainButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:backgroundTint="@color/blue_light"
+                    android:drawableLeft="@drawable/ic_geography"
+                    android:gravity="center"
+                    android:onClick="showFindStudioActivity"
+                    android:text="@string/findStudioButton"
+                    android:textSize="22sp" />
 
-    <Button
-        android:id="@+id/button3"
+                <Button
+                    android:id="@+id/findEventButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:backgroundTint="@color/blue_light"
+                    android:drawableLeft="@drawable/ic_calendar"
+                    android:onClick="showFindEventActivity"
+                    android:text="@string/findEventButton"
+                    android:textSize="22sp" />
 
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:backgroundTint="@color/blue_dark"
-        android:gravity="center"
-        android:padding="25dp"
-        android:textColor="#FFFDFD"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+            </LinearLayout>
 
-    <Button
-        android:id="@+id/imageExitButton"
-        android:layout_width="61dp"
-        android:layout_height="59dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/ic_close_black_24dp"
-        android:backgroundTint="@color/white"
-        android:clickable="true"
-        android:onClick="exitApp"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.47000003"
-        tools:ignore="OnClick" />
 
-    <Button
-        android:id="@+id/imageInfoButton"
-        android:layout_width="70dp"
-        android:layout_height="64dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="320dp"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/ic_info_black_24dp"
-        android:backgroundTint="@color/white"
-        android:clickable="true"
-        android:onClick="info"
-        app:layout_constraintBottom_toBottomOf="@+id/button2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/button2"
-        app:layout_constraintVertical_bias="0.62"
-        tools:ignore="OnClick" />
-    <!-- Основной контейнер разметки -->
+        </LinearLayout>
 
-</RelativeLayout>
-    <!-- Контейнер, содержащий выдвижное меню -->
-<RelativeLayout
-    android:id="@+id/left_drawer"
-    android:layout_width="210dp"
-    android:layout_height="match_parent"
-    android:layout_gravity="start"
-    android:choiceMode="none"
-    android:clickable="true"
-    android:background="#FFFFFF"
-    xmlns:android="http://schemas.android.com/apk/res/android" />
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigation_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header"
+        app:menu="@menu/drawer_menu">
+    </com.google.android.material.navigation.NavigationView>
 </androidx.drawerlayout.widget.DrawerLayout>

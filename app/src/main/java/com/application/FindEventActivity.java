@@ -22,7 +22,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import java.util.ArrayList;
 
-public class FindEventActivity extends Activity {
+public class FindEventActivity extends ParentNavigationActivity {
     final String LOG_TAG = "myLogs";
     ArrayAdapter<String> adapter;
     ArrayList<String> listItems = new ArrayList<String>();
@@ -39,6 +39,7 @@ public class FindEventActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_event);
+        onCreateOption(savedInstanceState);
         list = (ListView) findViewById(R.id.list);
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
@@ -160,6 +161,5 @@ public class FindEventActivity extends Activity {
         startActivity(intent);
     }
 }
-
 
 

@@ -22,7 +22,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 
-public class FindStudioActivity extends AppCompatActivity {
+public class FindStudioActivity extends  ParentNavigationActivity {
 
     final String LOG_TAG = "myLogs for Studio";
     ArrayAdapter<String> adapter;
@@ -42,6 +42,7 @@ public class FindStudioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_studio);
+        onCreateOption(savedInstanceState);
         list = (ListView) findViewById(R.id.list);
         adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,

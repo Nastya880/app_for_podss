@@ -9,11 +9,18 @@
     android:background="#F7FFFFFF"
     android:minWidth="19dp">
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:background="#F7FFFFFF"
+        android:layout_height="wrap_content">
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F7FFFFFF"
             android:orientation="vertical">
+
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -23,41 +30,19 @@
                 app:subtitleTextColor="#0A0A0A"
                 app:titleTextColor="#111111" />
 
-
             <TextView
-                android:id="@+id/infoEventAdd"
-                android:layout_width="match_parent"
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:paddingRight="20dp"
-                android:paddingLeft="20dp"
-                android:text="Мероприятие успешно добавлено"
+                android:text="Для использования приложения"
                 android:textAlignment="center"
-                android:textAllCaps="true"
-                android:textColor="@color/blue_dark"
-                android:textSize="34sp"
-                android:textStyle="bold"
-                 />
-
-            <Button
-                android:id="@+id/addNewEventButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:backgroundTint="@color/blue_light"
-                android:text="Добавить новое мероприятие"
-                android:textSize="20sp"
-                android:onClick="addNewButton"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/infoEventAdd"
-                android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"/>
-
+                android:textSize="24sp"
+                android:layout_marginTop="40dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"/>
 
         </LinearLayout>
-
+    </ScrollView>
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigation_menu"
         android:layout_width="match_parent"

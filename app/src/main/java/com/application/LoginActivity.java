@@ -13,7 +13,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends ParentNavigationActivity {
 
     TextView loginInfoText;
     EditText phoneEditText;
@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        onCreateOption(savedInstanceState);
         loginInfoText = findViewById(R.id.loginInfoText);
         phoneEditText = findViewById(R.id.editTextPhone);
     }
@@ -37,7 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         if (phoneString.length() != 12) {
             return false;
         }
-        if (phoneString.toCharArray()[0] != '+' || phoneString.toCharArray()[1] != '7') {
+        if (phoneString.toCharArray()[0] != '+' || phoneString.toCharArray()[1] != '7' || phoneString.toCharArray()[2] != '9') {
             return false;
         }
         return true;
@@ -45,7 +46,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void click(View view) {
         if (checkCorrect(phoneEditText.getText().toString())) {
-            MainActivity.authFlag = true;
+            //MainActivity.authFlag = true;
             Intent intent = new Intent(this, AddEventActivity.class);
             startActivity(intent);
         } else {

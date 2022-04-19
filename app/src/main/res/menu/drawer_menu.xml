@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single"
+        android:id="@+id/group1">
+        <item android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="Home">
+        </item>
+        <item android:id="@+id/nav_instruction"
+            android:icon="@drawable/ic_baseline_smartphone_24"
+            android:title="Справка">
+        </item>
+        <item android:id="@+id/nav_find_studio"
+            android:icon="@drawable/ic_geography"
+            android:title="Найти студию">
+        </item>
+        <item android:id="@+id/nav_find_event"
+            android:icon="@drawable/ic_calendar"
+            android:title="Найти мероприятие">
+        </item>
+        <item android:id="@+id/nav_add_event"
+            android:icon="@drawable/ic_bookmark_added_black_24dp"
+            android:title="Добавить мероприятие">
+        </item>
+
+    </group>
+
+
+    <group android:checkableBehavior="single"
+        android:id="@+id/group2">
+        <item android:id="@+id/nav_Policy"
+            android:icon="@drawable/ic_baseline_policy_24"
+            android:title="Privacy Policy">
+        </item>
+        <item android:id="@+id/nav_share"
+            android:icon="@drawable/ic_baseline_share_24"
+            android:title="Share">
+        </item>
+        <item android:id="@+id/nav_about_developer"
+            android:icon="@drawable/ic_baseline_people_24"
+            android:title="About Us">
+        </item>
+    </group>
+
+</menu>
