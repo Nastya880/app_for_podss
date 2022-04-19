@@ -82,6 +82,7 @@ public class EventPojo extends Pojo {
     @Override
     public String toString() {
         return "название:" + name +
+                ",\nОписание" + place +
                 ",\nвремя:" + dateTime;
     }
 }
