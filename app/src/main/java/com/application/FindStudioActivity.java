@@ -114,15 +114,7 @@ public class FindStudioActivity extends  ParentNavigationActivity {
         refreshList();
     }
 
-    protected boolean isOnline() {
-        String cs = Context.CONNECTIVITY_SERVICE;
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(cs);
-        if (cm.getActiveNetworkInfo() == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
+
 
     public void showMaps(int index) {
         MapsActivity.currentPojo = studios.get(index);
@@ -131,13 +123,13 @@ public class FindStudioActivity extends  ParentNavigationActivity {
         startActivity(intent);
     }
 
-    public void setStudioFindFlag(View view) {
-        flag = true;
-        costSeekBar.setEnabled(true);
-        costSeekBar.setVisibility(View.VISIBLE);
-
-        refreshList();
-    }
+//    public void setStudioFindFlag(View view) {
+//        flag = true;
+//        costSeekBar.setEnabled(true);
+//        costSeekBar.setVisibility(View.VISIBLE);
+//
+//        refreshList();
+//    }
 
     public void fillData() {
 
@@ -181,23 +173,4 @@ public class FindStudioActivity extends  ParentNavigationActivity {
         }
     }
 
-    public void exitApp(View view) {
-        new AlertDialog.Builder(this)
-                .setMessage("Вы действительно хотите выйти из приложения?")
-                .setCancelable(false)
-                .setPositiveButton("да", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.addCategory(Intent.CATEGORY_HOME);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(i);
-                    }
-                })
-                .setNegativeButton("Нет", null).show();
-    }
-
-    public void mainHome(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 }

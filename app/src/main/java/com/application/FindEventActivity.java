@@ -90,16 +90,6 @@ public class FindEventActivity extends ParentNavigationActivity {
         refreshList();
     }
 
-    protected boolean isOnline() {
-        String cs = Context.CONNECTIVITY_SERVICE;
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(cs);
-        if (cm.getActiveNetworkInfo() == null) {
-            return false;
-        } else {
-            return true;
-        }
-    }
-
     public void showMaps(int index) {
 
         MapsActivity.currentPojo = events.get(index);
@@ -107,10 +97,10 @@ public class FindEventActivity extends ParentNavigationActivity {
         startActivity(intent);
     }
 
-    public void setEventFindFlag(View view) {
-        flag = true;
-        refreshList();
-    }
+//    public void setEventFindFlag(View view) {
+//        flag = true;
+//        refreshList();
+//    }
 
     public void fillData() {
         if (events.size() == 0) {
@@ -141,25 +131,6 @@ public class FindEventActivity extends ParentNavigationActivity {
         }
     }
 
-    public void exitApp(View view) {
-        new AlertDialog.Builder(this)
-                .setMessage("Вы действительно хотите выйти из приложения?")
-                .setCancelable(false)
-                .setPositiveButton("да", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.addCategory(Intent.CATEGORY_HOME);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(i);
-                    }
-                })
-                .setNegativeButton("Нет", null).show();
-    }
-
-    public void mainHome(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
 }
 
 

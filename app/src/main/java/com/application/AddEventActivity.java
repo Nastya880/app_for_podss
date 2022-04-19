@@ -147,6 +147,7 @@ public class AddEventActivity extends ParentNavigationActivity{
     public void addEvent(View view) {
         if (eventTitlePlainText.getText().toString().length() <= 0)
             showAlertDialog("Введите название мероприятия");
+            //showAlertDialog(LoginActivity.phoneEditText.getText().toString());
         else if (eventTitlePlainText.getText().toString().length() >= 50)
             showAlertDialog("Название мероприятия слишком большое");
         else if (eventPlacePlainText.getText().toString().length() <= 0)
@@ -167,10 +168,11 @@ public class AddEventActivity extends ParentNavigationActivity{
         else if (!isOnline())
             showAlertDialog("Проверьте подключение к интернету");
         else {
+
             String stringDate = String.format("%s %s:00",dateText.getText().toString(), tvTime.getText().toString());
 
             APIHandler.addEvent(new EventPojo(-1, eventTitlePlainText.getText().toString(), eventPlacePlainText.getText().toString(),
-                    stringDate, Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())));
+                    stringDate, Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString()), LoginActivity.phoneEditText.getText().toString()));
 
             Intent intent = new Intent(this, MessageAddEventActivity.class);
             startActivity(intent);

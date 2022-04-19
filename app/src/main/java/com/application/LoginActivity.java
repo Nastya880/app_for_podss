@@ -16,7 +16,7 @@ import android.widget.TextView;
 public class LoginActivity extends ParentNavigationActivity {
 
     TextView loginInfoText;
-    EditText phoneEditText;
+    static  EditText phoneEditText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,14 +10,16 @@ public class EventPojo extends Pojo {
     private String dateTime;
     private Double lat;
     private Double lng;
+    private String phone;
 
-    public EventPojo(Integer id, String name, String place, String dateTime, Double lat, Double lng) {
+    public EventPojo(Integer id, String name, String place, String dateTime, Double lat, Double lng, String phone) {
         this.id = id;
         this.name = name;
         this.place = place;
         this.dateTime = dateTime;
         this.lat = lat;
         this.lng = lng;
+        this.phone = phone;
     }
 
     public JSONObject toJSON() throws JSONException {
@@ -28,8 +30,13 @@ public class EventPojo extends Pojo {
         jo.put("datetime", dateTime);
         jo.put("lat", lat);
         jo.put("lng", lng);
+        jo.put("phone", phone);
         return jo;
     }
+
+    public String getPhone() { return phone; }
+
+    public void setPhone(String phone) { this.phone = phone; }
 
     public Integer getId() {
         return id;
