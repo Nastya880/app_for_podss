@@ -4,12 +4,9 @@
         android:id="@+id/group1">
         <item android:id="@+id/nav_home"
             android:icon="@drawable/ic_baseline_home_24"
-            android:title="Home">
+            android:title="Главная">
         </item>
-        <item android:id="@+id/nav_instruction"
-            android:icon="@drawable/ic_baseline_smartphone_24"
-            android:title="Справка">
-        </item>
+
         <item android:id="@+id/nav_find_studio"
             android:icon="@drawable/ic_geography"
             android:title="Найти студию">
@@ -28,17 +25,21 @@
 
     <group android:checkableBehavior="single"
         android:id="@+id/group2">
+        <item android:id="@+id/nav_instruction"
+            android:icon="@drawable/ic_baseline_smartphone_24"
+            android:title="Инструкция">
+        </item>
         <item android:id="@+id/nav_Policy"
             android:icon="@drawable/ic_baseline_policy_24"
             android:title="Privacy Policy">
         </item>
         <item android:id="@+id/nav_share"
             android:icon="@drawable/ic_baseline_share_24"
-            android:title="Share">
+            android:title="Поделиться">
         </item>
         <item android:id="@+id/nav_about_developer"
             android:icon="@drawable/ic_baseline_people_24"
-            android:title="About Us">
+            android:title="О разработчике">
         </item>
     </group>
 

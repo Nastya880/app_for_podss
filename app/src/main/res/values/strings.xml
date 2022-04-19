@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">ОДС</string>
+    <string name="app_name">ОргДвиж</string>
     <string name="addButton">Добавить мероприятие</string>
     <string name="findStudioButton">Найти студию</string>
     <string name="findEventButton">Найти мероприятие</string>
