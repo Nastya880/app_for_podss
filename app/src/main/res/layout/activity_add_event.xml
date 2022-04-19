@@ -28,7 +28,7 @@
                 android:background="@color/blue_dark"
                 app:subtitleTextColor="#0A0A0A"
                 app:title="Добавление мероприятия"
-                app:titleMargin="15dp"
+                app:titleMargin="11dp"
                 app:titleTextColor="@color/white" />
 
 

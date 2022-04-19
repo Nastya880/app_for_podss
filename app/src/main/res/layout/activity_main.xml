@@ -22,7 +22,7 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/blue_dark"
+                android:background="@color/orange"
                 app:subtitleTextColor="@color/white"
                 app:title="Главная"
                 app:titleMargin="12dp"
@@ -40,11 +40,12 @@
                     android:id="@+id/addButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#FF77DD"
+                    android:backgroundTint="@color/blue_dark"
                     android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"
                     android:onClick="showLoginActivity"
 
                     android:text="@string/addButton"
+                    android:textColor="@color/white"
                     android:textSize="22sp" />
 
                 <Button
@@ -53,11 +54,12 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true"
-                    android:backgroundTint="#CEFF77DD"
+                    android:backgroundTint="@color/blue_dark"
                     android:drawableLeft="@drawable/ic_geography"
                     android:gravity="center"
                     android:onClick="showFindStudioActivity"
                     android:text="@string/findStudioButton"
+                    android:textColor="@color/white"
                     android:textSize="22sp" />
 
                 <Button
@@ -65,10 +67,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:backgroundTint="@color/pink_light"
+                    android:backgroundTint="@color/blue_dark"
                     android:drawableLeft="@drawable/ic_calendar"
                     android:onClick="showFindEventActivity"
                     android:text="@string/findEventButton"
+                    android:textColor="@color/white"
                     android:textSize="22sp" />
 
             </LinearLayout>
