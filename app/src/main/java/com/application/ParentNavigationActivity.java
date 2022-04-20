@@ -1,5 +1,6 @@
 package com.application;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -7,6 +8,7 @@ import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
@@ -29,7 +31,7 @@ public class ParentNavigationActivity extends AppCompatActivity {
                 switch (menuItem.getItemId())
                 {
                     case R.id.nav_add_event:
-                        Intent intentaddEvent = new Intent(ParentNavigationActivity.this, AddEventActivity.class);
+                        Intent intentaddEvent = new Intent(ParentNavigationActivity.this, LoginActivity.class);
                         startActivity(intentaddEvent);
                         break;
                     case R.id.nav_find_event:
@@ -59,13 +61,24 @@ public class ParentNavigationActivity extends AppCompatActivity {
 
 //Paste your privacy policy link
 
-//                    case  R.id.nav_Policy:{
-//
+                    case  R.id.nav_exit:{
+                        new AlertDialog.Builder(ParentNavigationActivity.this)
+                                .setMessage("Вы действительно хотите выйти из приложения?")
+                                .setCancelable(false)
+                                .setPositiveButton("да", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        Intent i = new Intent(Intent.ACTION_MAIN);
+                                        i.addCategory(Intent.CATEGORY_HOME);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                        startActivity(i);
+                                    }
+                                })
+                                .setNegativeButton("Нет", null).show();
 //                        Intent browserIntent  = new Intent(Intent.ACTION_VIEW , Uri.parse(""));
 //                        startActivity(browserIntent);
-//
-//                    }
-                    //       break;
+
+                    }
+                           break;
                     case  R.id.nav_share:{
 
                         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);

@@ -29,10 +29,7 @@
             android:icon="@drawable/ic_baseline_smartphone_24"
             android:title="Инструкция">
         </item>
-        <item android:id="@+id/nav_Policy"
-            android:icon="@drawable/ic_baseline_policy_24"
-            android:title="Privacy Policy">
-        </item>
+
         <item android:id="@+id/nav_share"
             android:icon="@drawable/ic_baseline_share_24"
             android:title="Поделиться">
@@ -40,6 +37,10 @@
         <item android:id="@+id/nav_about_developer"
             android:icon="@drawable/ic_baseline_people_24"
             android:title="О разработчике">
+        </item>
+        <item android:id="@+id/nav_exit"
+            android:icon="@drawable/ic_close_black_24dp"
+            android:title="Выход">
         </item>
     </group>
 
