@@ -27,7 +27,7 @@ public class LoginActivity extends ParentNavigationActivity {
         phoneEditText = findViewById(R.id.editTextPhone);
     }
 
-    private boolean checkCorrect(String phoneString) {
+    protected static boolean checkCorrect(String phoneString) {
         //String phoneNumber = "+7(9##) ###-##-##";
         // String text = String.valueOf( android.telephony.PhoneNumberUtils.formatNumber(phoneNumber) );
         //formatted: 123-456-7890
@@ -64,20 +64,5 @@ public class LoginActivity extends ParentNavigationActivity {
     public void mainHome(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
-    }
-
-    public void exitApp(View view) {
-        new AlertDialog.Builder(this)
-                .setMessage("Вы действительно хотите выйти из приложения?")
-                .setCancelable(false)
-                .setPositiveButton("да", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.addCategory(Intent.CATEGORY_HOME);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(i);
-                    }
-                })
-                .setNegativeButton("Нет", null).show();
     }
 }

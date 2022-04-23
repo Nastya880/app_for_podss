@@ -121,7 +121,7 @@ public class AddEventActivity extends ParentNavigationActivity{
         return true;
     }
 
-    public void showAlertDialog(String message)
+    public boolean showAlertDialog(String message)
     {
         final int DIALOG_EXIT = 1;
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
@@ -132,6 +132,7 @@ public class AddEventActivity extends ParentNavigationActivity{
         adb.create();
         showDialog(DIALOG_EXIT);
         adb.show();
+        return false;
     }
 
     protected boolean isOnline() {
@@ -144,30 +145,29 @@ public class AddEventActivity extends ParentNavigationActivity{
         }
     }
 
-    public void addEvent(View view) {
+    public boolean addEvent(View view) {
         if (eventTitlePlainText.getText().toString().length() <= 0)
-            showAlertDialog("Введите название мероприятия");
+            return (showAlertDialog("Введите название мероприятия"));
         else if (eventTitlePlainText.getText().toString().length() >= 50)
-            showAlertDialog("Название мероприятия слишком большое");
+            return (showAlertDialog("Название мероприятия слишком большое"));
         else if (eventPlacePlainText.getText().toString().length() <= 0)
-            showAlertDialog("Введите описания мероприятия");
+            return (showAlertDialog("Введите описания мероприятия"));
         else if (eventPlacePlainText.getText().toString().length() >= 255)
-            showAlertDialog("Описание мероприятия слишком большое");
+            return (showAlertDialog("Описание мероприятия слишком большое"));
 
         else if (latEditTextNumberDecimal.getText().toString().length() <= 0)
-            showAlertDialog("Введите координату широты");
+            return (showAlertDialog("Введите координату широты"));
         else if (lngEditTextNumberDecimal.getText().toString().length() <= 0)
-            showAlertDialog("Введите координату долготы");
+            return (showAlertDialog("Введите координату долготы"));
         else if (!checkAddressString(Double.parseDouble(latEditTextNumberDecimal.getText().toString()), Double.parseDouble(lngEditTextNumberDecimal.getText().toString())))
-            showAlertDialog("Введенные координаты не удовлетворяют существующему местоположению. Введите корректные координаты");
+            return (showAlertDialog("Введенные координаты не удовлетворяют существующему местоположению. Введите корректные координаты"));
         else if (dateText.getText().toString().length() <= 0)
-            showAlertDialog("Выберите дату проведения мероприятия");
+            return (showAlertDialog("Выберите дату проведения мероприятия"));
         else if (tvTime.getText().toString().length() <= 0)
-            showAlertDialog("Выберите время проведения мероприятия");
+            return (showAlertDialog("Выберите время проведения мероприятия"));
         else if (!isOnline())
-            showAlertDialog("Проверьте подключение к интернету");
+            return (showAlertDialog("Проверьте подключение к интернету"));
         else {
-
             String stringDate = String.format("%s %s:00",dateText.getText().toString(), tvTime.getText().toString());
 
             APIHandler.addEvent(new EventPojo(-1, eventTitlePlainText.getText().toString(), eventPlacePlainText.getText().toString(),
@@ -175,26 +175,7 @@ public class AddEventActivity extends ParentNavigationActivity{
 
             Intent intent = new Intent(this, MessageAddEventActivity.class);
             startActivity(intent);
+            return true;
         }
-    }
-
-    public void mainHome(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
-    public void exitApp(View view) {
-        new AlertDialog.Builder(this)
-                .setMessage("Вы действительно хотите выйти из приложения?")
-                .setCancelable(false)
-                .setPositiveButton("да", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.addCategory(Intent.CATEGORY_HOME);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(i);
-                    }
-                })
-                .setNegativeButton("Нет", null).show();
     }
 }
