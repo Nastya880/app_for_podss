@@ -49,14 +49,14 @@ public class AddEventActivity extends ParentNavigationActivity{
         TimePickerDialog.OnTimeSetListener myCallBack = new TimePickerDialog.OnTimeSetListener() {
 
             public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-               if (hourOfDay < 10 & minute < 10)
-                   tvTime.setText("0" + hourOfDay + ":0" + minute);
-               else if (hourOfDay < 10)
-                   tvTime.setText("0" + hourOfDay + ":" + minute);
-               else if (minute < 10)
-                   tvTime.setText(hourOfDay + ":0" + minute);
-               else
-                   tvTime.setText(hourOfDay + ":" + minute);
+                if (hourOfDay < 10 & minute < 10)
+                    tvTime.setText("0" + hourOfDay + ":0" + minute);
+                else if (hourOfDay < 10)
+                    tvTime.setText("0" + hourOfDay + ":" + minute);
+                else if (minute < 10)
+                    tvTime.setText(hourOfDay + ":0" + minute);
+                else
+                    tvTime.setText(hourOfDay + ":" + minute);
             }
         };
         tvTime.setOnClickListener(new View.OnClickListener() {
