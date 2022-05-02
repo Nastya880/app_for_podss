@@ -11,8 +11,15 @@ import java.util.concurrent.ExecutionException;
 
 public class APIHandler {
 
+    /**
+     * Конвертация данных в JSON для отправки НА сервер списка мероприятий - метод POST
+     * @param eventPojo
+     * @return
+     */
     public static boolean addEvent(EventPojo eventPojo) {
         try {
+            //AssyncTask нужен для синхронизации обработчика потока с UI
+            //AsyncTask<[Input_Parameter Type], [Progress_Report Type], [Result Type]>
             AsyncTask<String, Void, JSONArray> jsonArray = new POSTHandler().execute("https://nastya2022.pythonanywhere.com/api/event/add", eventPojo.toJSON().toString());
             return true;
         } catch (JSONException e) {
@@ -21,13 +28,21 @@ public class APIHandler {
         return false;
     }
 
+    /**
+     * Получение списка мероприятий в формате JSON с сервера
+     * @return
+     */
     public static ArrayList<EventPojo> getEvents() {
         ArrayList<EventPojo> events = new ArrayList<>();
-        AsyncTask<String, Void, JSONArray> jsonArray = new JSONHandler().execute("https://nastya2022.pythonanywhere.com/api/event/list");
+        AsyncTask<String, Void, JSONArray> jsonArray = new
+                JSONHandler().execute("https://nastya2022.pythonanywhere.com/api/event/list");
         try {
             for (int i = 0; i < jsonArray.get().length(); i++) {
                 JSONObject exploreObject = jsonArray.get().getJSONObject(i);
-                events.add(new EventPojo(exploreObject.getInt("id"), exploreObject.getString("name"), exploreObject.getString("description"), exploreObject.getString("datetime"), exploreObject.getDouble("lat"), exploreObject.getDouble("lng"), exploreObject.getString("phone")));
+                events.add(new EventPojo(exploreObject.getInt("id"),
+                        exploreObject.getString("name"), exploreObject.getString("description"),
+                        exploreObject.getString("datetime"), exploreObject.getDouble("lat"),
+                        exploreObject.getDouble("lng"), exploreObject.getString("phone")));
             }
         } catch (ExecutionException | InterruptedException | JSONException e) {
             e.printStackTrace();
@@ -35,9 +50,14 @@ public class APIHandler {
         return events;
     }
 
+    /**
+     * Получение списка студий в формате JSON с сервера
+     * @return
+     */
     public static ArrayList<StudioPojo> getStudios() {
         ArrayList<StudioPojo> studios = new ArrayList<>();
-        AsyncTask<String, Void, JSONArray> jsonArray = new JSONHandler().execute("https://nastya2022.pythonanywhere.com/api/studio/list");
+        AsyncTask<String, Void, JSONArray> jsonArray = new
+                JSONHandler().execute("https://nastya2022.pythonanywhere.com/api/studio/list");
         try {
             for (int i = 0; i < jsonArray.get().length(); i++) {
                 JSONObject exploreObject = jsonArray.get().getJSONObject(i);
@@ -50,6 +70,4 @@ public class APIHandler {
         }
         return studios;
     }
-
-
 }

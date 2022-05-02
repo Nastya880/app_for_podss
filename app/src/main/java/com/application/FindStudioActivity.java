@@ -1,9 +1,6 @@
 package com.application;
 
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,27 +14,32 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 
 public class FindStudioActivity extends  ParentNavigationActivity {
 
     final String LOG_TAG = "myLogs for Studio";
+    /* ArrayAdapter нужен для представления данных  в виде
+       массива ListView, элементы которого размещаются в отдельных элементах TextView
+    */
     ArrayAdapter<String> adapter;
+    //Динамический массив
     ArrayList<String> listItems = new ArrayList<String>();
-
+    //Ползунок стоимости
     SeekBar costSeekBar;
     TextView costTextView;
     ListView list;
 
     boolean flag = true;
-
+    //Список с характеристиками студий
     public static ArrayList<StudioPojo> studios = new ArrayList<>();
-
     private String filter = "";
 
+    /**
+     * Создание активити
+     * Экран поиска студий
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,8 +116,10 @@ public class FindStudioActivity extends  ParentNavigationActivity {
         refreshList();
     }
 
-
-
+    /**
+     * Отображение маркера местоположения студии на Google-карте
+     * @param index
+     */
     public void showMaps(int index) {
         MapsActivity.currentPojo = studios.get(index);
 
@@ -123,14 +127,9 @@ public class FindStudioActivity extends  ParentNavigationActivity {
         startActivity(intent);
     }
 
-//    public void setStudioFindFlag(View view) {
-//        flag = true;
-//        costSeekBar.setEnabled(true);
-//        costSeekBar.setVisibility(View.VISIBLE);
-//
-//        refreshList();
-//    }
-
+    /**
+     * Получение данных о студиях с сервера
+     */
     public void fillData() {
 
         if (studios.size() == 0) {
@@ -138,6 +137,11 @@ public class FindStudioActivity extends  ParentNavigationActivity {
         }
     }
 
+    /**
+     * Обработка поискового запроса по цене
+     * @param studioPojo
+     * @return
+     */
     public boolean costFilter(StudioPojo studioPojo) {
         if (costSeekBar.getProgress() > 0) {
             if (studioPojo.getAvgPrice() <= costSeekBar.getProgress()) {
@@ -149,6 +153,11 @@ public class FindStudioActivity extends  ParentNavigationActivity {
         return true;
     }
 
+    /**
+     * Проверка использования поискового запроса
+     * @param pojo
+     * @return
+     */
     public boolean searchFilter(Pojo pojo) {
         if (filter.length() > 0) {
             if (pojo.toString().contains(filter)) {
@@ -160,6 +169,9 @@ public class FindStudioActivity extends  ParentNavigationActivity {
         return true;
     }
 
+    /**
+     * Обновление отображения списка студий после использования поиска
+     */
     public void refreshList() {
         fillData();
         adapter.clear();
@@ -172,5 +184,4 @@ public class FindStudioActivity extends  ParentNavigationActivity {
 
         }
     }
-
 }

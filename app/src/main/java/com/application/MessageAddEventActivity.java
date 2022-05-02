@@ -10,6 +10,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MessageAddEventActivity extends ParentNavigationActivity {
 
+    /**
+     * Создание активити
+     * Экран после успешного добавления мероприятия
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -17,33 +22,12 @@ public class MessageAddEventActivity extends ParentNavigationActivity {
         onCreateOption(savedInstanceState);
     }
 
-    public void lookInfoAddedEvent(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
-
+    /**
+     * Обработка нажатия на кнопку "Добавить новое мероприятие"
+     * @param view
+     */
     public void addNewButton(View view) {
         Intent intent = new Intent(this, AddEventActivity.class);
-        startActivity(intent);
-    }
-
-    public void exitApp(View view) {
-        new AlertDialog.Builder(this)
-                .setMessage("Вы действительно хотите выйти из приложения?")
-                .setCancelable(false)
-                .setPositiveButton("да", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent i = new Intent(Intent.ACTION_MAIN);
-                        i.addCategory(Intent.CATEGORY_HOME);
-                        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                        startActivity(i);
-                    }
-                })
-                .setNegativeButton("Нет", null).show();
-    }
-
-    public void mainHome(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

@@ -10,8 +10,16 @@ import android.view.View;
 
 public class MainActivity extends ParentNavigationActivity{
 
+    /* Флаг для определения: авторизован пользователь или нет
+       Используется, чтобы не проходить уже авторизованному пользователю вновь
+       авторизацию при добавлении нового мероприятия */
     public static boolean authFlag = false;
 
+    /**
+     * Создание активити
+     * главный экран
+     * @param savedInstanceState Текущее состояние
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,19 +27,27 @@ public class MainActivity extends ParentNavigationActivity{
         onCreateOption(savedInstanceState);
     }
 
+    /**
+     * Создание диалогового окна
+     * @param message Сообщение в окне
+     * @param title Заголовок окна
+     */
     public void showAlertDialog(String message, String title)
     {
-        final int DIALOG_EXIT = 1;
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
 
         adb.setTitle(title);
         adb.setMessage(message);
         adb.setNeutralButton(R.string.ok, null);
         adb.create();
-        showDialog(DIALOG_EXIT);
         adb.show();
     }
 
+    /**
+     * Обработка нажатия кнопки "Добавить мероприятие"
+     * переход на активити с авторизацией
+     * @param view
+     */
         public void showLoginActivity(View view) {
         Intent intent;
         if (!authFlag) {
@@ -42,7 +58,11 @@ public class MainActivity extends ParentNavigationActivity{
         startActivity(intent);
     }
 
-        protected boolean isOnline() {
+    /**
+     * Проверка интернет-соединения
+     * @return
+     */
+    protected boolean isOnline() {
         String cs = Context.CONNECTIVITY_SERVICE;
         ConnectivityManager cm = (ConnectivityManager) getSystemService(cs);
         if (cm.getActiveNetworkInfo() == null)
@@ -51,6 +71,11 @@ public class MainActivity extends ParentNavigationActivity{
             return true;
     }
 
+    /**
+     * Обработка нажатия кнопки "Найти мероприятие"
+     * переход на активити поиска мероприятия
+     * @param view
+     */
     public void showFindEventActivity(View view) {
         if (!isOnline())
             showAlertDialog("Проверьте подключение к интернету", "ОШИБКА");
@@ -59,12 +84,18 @@ public class MainActivity extends ParentNavigationActivity{
             startActivity(intent);
         }
     }
-        public void showFindStudioActivity(View view) {
+
+    /**
+     * Обработка нажатия кнопки "Найти студию"
+     * переход на активити поиска студии
+     * @param view
+     */
+    public void showFindStudioActivity(View view) {
         if (!isOnline())
             showAlertDialog("Проверьте подключение к интернету", "ОШИБКА");
-        else {
+        {
             Intent intent = new Intent(this, FindStudioActivity.class);
             startActivity(intent);
-        }
+       }
     }
 }

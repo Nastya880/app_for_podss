@@ -16,6 +16,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
+//Класс, реализующий боковое меню-гамбургер
 public class ParentNavigationActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -57,10 +58,6 @@ public class ParentNavigationActivity extends AppCompatActivity {
                         Intent intentAboutDeveloper = new Intent(ParentNavigationActivity.this , AboutDeveloperActivity.class);
                         startActivity(intentAboutDeveloper);
                         break;
-
-
-//Paste your privacy policy link
-
                     case  R.id.nav_exit:{
                         new AlertDialog.Builder(ParentNavigationActivity.this)
                                 .setMessage("Вы действительно хотите выйти из приложения?")
@@ -74,13 +71,9 @@ public class ParentNavigationActivity extends AppCompatActivity {
                                     }
                                 })
                                 .setNegativeButton("Нет", null).show();
-//                        Intent browserIntent  = new Intent(Intent.ACTION_VIEW , Uri.parse(""));
-//                        startActivity(browserIntent);
-
                     }
                            break;
                     case  R.id.nav_share:{
-
                         Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
                         sharingIntent.setType("text/plain");
                         String shareBody =  "http://play.google.com/store/apps/detail?id=" + getPackageName();
@@ -88,18 +81,12 @@ public class ParentNavigationActivity extends AppCompatActivity {
                         sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, shareSub);
                         sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
                         startActivity(Intent.createChooser(sharingIntent, "Share using"));
-
                     }
                     break;
                 }
                 return false;
             }
         });
-    }
-
-    public void lightbutton(View view) {
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
-
     }
 
     public void setUpToolbar() {
@@ -111,4 +98,5 @@ public class ParentNavigationActivity extends AppCompatActivity {
         actionBarDrawerToggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.white));
         actionBarDrawerToggle.syncState();
 
-    }}
+    }
+}

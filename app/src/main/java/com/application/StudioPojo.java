@@ -1,5 +1,6 @@
 package com.application;
 
+//Класс, выступающий сущностью студий в БД
 public class StudioPojo extends Pojo {
     private Integer id;
     private String place;
@@ -10,6 +11,16 @@ public class StudioPojo extends Pojo {
     private Double lat;
     private Double lng;
 
+    /**
+     * Констурктор класс StudioPojo
+     * @param id уникальный порядковый номер студии
+     * @param name название студии
+     * @param description описание студии
+     * @param type тип студии
+     * @param avgPrice стоимость тренировки
+     * @param lat координата широты
+     * @param lng координата долготы
+     */
     public StudioPojo(Integer id, String place, String name, String description, String type, Integer avgPrice, Double lat, Double lng) {
         this.id = id;
         this.place = place;
@@ -85,26 +96,16 @@ public class StudioPojo extends Pojo {
         this.avgPrice = avgPrice;
     }
 
+    /**
+     * Данные о студии для отображения на экране
+     * @return
+     */
     @Override
     public String toString() {
         return
-                "id=" + id +
-                ",\nместо = " + place  +
-                ",\nназвание = " + name +
+                "название = " + name +
                 ",\nописание = " + description  +
                 ",\nтип = " + type  +
                 ",\nстоимость = " + avgPrice;
     }
 }
-//    @Override
-//    public String toString() {
-//        return "StudioPojo{" +
-//                "id=" + id +
-//                ", place='" + place + '\'' +
-//                ", name='" + name + '\'' +
-//                ", description='" + description + '\'' +
-//                ", type='" + type + '\'' +
-//                ", avgPrice=" + avgPrice +
-//                '}';
-//    }
-//}

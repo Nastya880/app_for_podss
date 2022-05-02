@@ -13,6 +13,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+/**
+ * AsyncTask<[Input_Parameter Type], [Progress_Report Type], [Result Type]>
+ * Установка соединения по протоколу HTTP
+ * запрос GET использован для получения данных с сервера
+ */
 public class JSONHandler extends AsyncTask<String, Void, JSONArray> {
     @Override
     protected JSONArray doInBackground(String... strings) {

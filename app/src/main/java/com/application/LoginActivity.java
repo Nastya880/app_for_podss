@@ -1,50 +1,52 @@
 package com.application;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.widget.EditText;
-import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 public class LoginActivity extends ParentNavigationActivity {
 
-    private static boolean isDeletePressed;
-    TextView loginInfoText;
+    //Переменная для редактирования поля ввода номера телефона
     public static EditText phoneEditText;
 
+    /**
+     * создание активити - экран авторизации
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        //Отображение меню-гамбургера
         onCreateOption(savedInstanceState);
-        loginInfoText = findViewById(R.id.loginInfoText);
         phoneEditText = findViewById(R.id.editTextPhone);
-//    }
-//
-//    protected static boolean checkCorrect(String phoneString) {
+
+        //Отслеживание изменений при вводе номера телефона - создание маски +7() ХХХ-ХХ-ХХ
         phoneEditText.addTextChangedListener(new TextWatcher() {
-            //we need to know if the user is erasing or inputing some new character
+            //Флаг: пользователь стирает или вводит новый символ
             private boolean backspacingFlag = false;
-            //we need to block the :afterTextChanges method to be called again after we just replaced the EditText text
+            //Блокировка повторноко вызов afterTextChanges() после того, как  заменен текст EditText
             private boolean editedFlag = false;
-            //we need to mark the cursor position and restore it after the edition
+            //Положение курсора для восстановления после изменения
             private int cursorComplement;
 
+            /**
+             * методы интерфейса TextWatcher()
+             * @param s
+             * @param start
+             * @param count
+             * @param after
+             */
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //we store the cursor local relative to the end of the string in the EditText before the edition
+                //Сохранение курсора относительно конца строки в EditText перед редактированием
                 cursorComplement = s.length() - phoneEditText.getSelectionStart();
-                //we check if the user ir inputing or erasing a character
+                //Проверка: пользователь вводит или стирает символ
                 if (count > after) {
                     backspacingFlag = true;
                 } else {
@@ -54,80 +56,78 @@ public class LoginActivity extends ParentNavigationActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-
             }
 
             @Override
             public void afterTextChanged(Editable s) {
                 String string = s.toString();
-                //what matters are the phone digits beneath the mask, so we always work with a raw string with only digits
+                //Всегда работа с необработанной строкой, содержащей только цифры,
+                //Т.К. используется маска
                 String phone = string.replaceAll("[^\\d]", "");
 
-                //if the text was just edited, :afterTextChanged is called another time... so we need to verify the flag of edition
-                //if the flag is false, this is a original user-typed entry. so we go on and do some magic
+                /* Если текст был только что отредактирован, то :afterTextChanged не вызывается
+                   Нужно проверить флаг редактирования
+                   Если флаг имеет значение false, это исходная запись,
+                   введенная пользователем, поэтому применяется маска */
                 if (!editedFlag) {
-
-                    //we start verifying the worst case, many characters mask need to be added
-                    //example: 999999999 <- 6+ digits already typed
-                    // masked: (999) 999-999
+                    /* Проверка полного введения, необходимо добавить много символов, маскирующих
+                       например введено: 999999999
+                       отображение: (999) 999-999 */
                     if (phone.length() >= 9 && !backspacingFlag) {
-                        //we will edit. next call on this textWatcher will be ignored
+                        // Редактирование, значит в следующем вызове этой обработки - игнорирование
                         editedFlag = true;
-                        //here is the core. we substring the raw digits and add the mask as convenient
+                        // Сочетание необработанных цифр и с маской по мере необходимости
                         String ans = "+7(" + phone.substring(1, 4) + ") " + phone.substring(4, 7) + "-" + phone.substring(7, 9) + "-" + phone.substring(9);
                         phoneEditText.setText(ans);
-                        //we deliver the cursor to its original position relative to the end of the string
+                        // Возвращение курсора в исходное положение относительно конца строки
                         phoneEditText.setSelection(phoneEditText.getText().length() - cursorComplement);
 
-                        //we end at the most simple case, when just one character mask is needed
-                        //example: 99999 <- 3+ digits already typed
-                        // masked: (999) 99
+                        /* Конец на самом простом случае, когда требуется только одна маска
+                           например введено: 99999
+                           маска: (999) 99 */
                     } else if (phone.length() >= 4 && !backspacingFlag) {
                         editedFlag = true;
                         String ans = "+7(" + phone.substring(1, 4) + ") " + phone.substring(4);
                         phoneEditText.setText(ans);
                         phoneEditText.setSelection(phoneEditText.getText().length() - cursorComplement);
                     }
-                    // We just edited the field, ignoring this cicle of the watcher and getting ready for the next
+                    //Поле отредактирвоано
                 } else {
                     editedFlag = false;
                 }
             }
         });
-        phoneEditText.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View view, int i, KeyEvent keyEvent) {
-                isDeletePressed = (i == KeyEvent.KEYCODE_DEL);
-                return false;
-            }
-        });
-      //  return true;
     }
-//        if (phoneString.length() != 12) {
-//            return false;
-//        }
-//        if (phoneString.toCharArray()[0] != '+' || phoneString.toCharArray()[1] != '7' || phoneString.toCharArray()[2] != '9') {
-//            return false;
-//        }
-//        return true;
-    //}
 
+    /**
+     * создание диалогового окна
+     * @param message сообщение в окне
+     * @param title заголовок окна
+     */
+    public void showAlertDialog(String message, String title)
+    {
+        AlertDialog.Builder adb = new AlertDialog.Builder(this);
+
+        adb.setTitle(title);
+        adb.setMessage(message);
+        adb.setNeutralButton(R.string.ok, null);
+        adb.create();
+        adb.show();
+    }
+
+    /**
+     * обработка нажатия кнопки "Войти"
+     * переход на активити с добавлением информации о мероприятии
+     * @param view
+     */
     public void click(View view) {
-      //  if (checkCorrect(phoneEditText.getText().toString())) {
+        if (phoneEditText.length() != 17)
+            showAlertDialog("Введите корректный номер телефона", "ОШИБКА");
+        else {
+            //установка флага авторизованного пользователя
             MainActivity.authFlag = true;
             Intent intent = new Intent(this, AddEventActivity.class);
             startActivity(intent);
-    //    } else {
-//            final int DIALOG_EXIT = 1;
-//            AlertDialog.Builder adb = new AlertDialog.Builder(this);
-//            adb.setTitle(R.string.error);
-//            adb.setMessage("Введите ваш номер телефона в формате: +7 (9ХХ) ХХХ-ХХ-ХХ");
-//            adb.setNeutralButton(R.string.ok, null);
-//            adb.create();
-//            showDialog(DIALOG_EXIT);
-//            adb.show();
-//        }
+        }
     }
-
-
 }

@@ -23,9 +23,9 @@ public class AddEventActivityTest extends TestCase {
 //    public void setUp() throws Exception {
 //        AddEventActivity
 //    }
+////
 //    @Test
-//    public void addEvent() {
-//        EditText EvenTitlePlace = ;
-//        boolean res = AddEventActivity.
+//    public void addEvent() throws Exception{
+//        assertEquals("", AddEventActivity.checkAdressString(44, 44));
 //    }
 }
