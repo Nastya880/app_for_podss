@@ -30,19 +30,24 @@
                 app:titleTextColor="@color/white" />
 
 
-
-
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="Приложение ОДС разработано в рамках ВКР"
-                android:textSize="24sp"
-                android:paddingTop="80dp"
-                android:layout_marginRight="20dp"
                 android:layout_marginLeft="20dp"
-                />
+                android:layout_marginRight="20dp"
+                android:paddingTop="20dp"
+                android:text="Мобильное прилоежение для повышения эффективности организации деятельности спортивных студий разработано в рамках ВКР студенткой МИЭТ группы ПИН-41 Макеевой Анастасией"
+                android:textAlignment="viewStart"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="match_parent"
+                android:layout_height="360dp"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@mipmap/ic_launcher_develop" />
 
         </LinearLayout>
 
