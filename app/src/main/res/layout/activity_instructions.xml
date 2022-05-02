@@ -14,13 +14,11 @@
         android:background="#F7FFFFFF"
         android:layout_height="wrap_content">
 
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="#F7FFFFFF"
             android:orientation="vertical">
-
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -32,17 +30,25 @@
                 app:titleMargin="15dp"
                 app:titleTextColor="@color/white" />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+            <ScrollView
+                android:id="@+id/SCROLLER_ID"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Для использования приложения"
-                android:textColor="@color/black"
-                android:textSize="24sp"
-                android:layout_marginTop="40dp"
-                android:paddingLeft="20dp"
-                android:paddingRight="20dp"/>
+                android:scrollbars="vertical"
+                android:fillViewport="true">
 
+                <TextView
+                    android:id="@+id/textInstruction"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Для использования приложения"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                    android:layout_marginTop="40dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"/>
+
+            </ScrollView>
         </LinearLayout>
     </ScrollView>
     <com.google.android.material.navigation.NavigationView
