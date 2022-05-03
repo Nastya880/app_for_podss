@@ -93,9 +93,9 @@ public class MainActivity extends ParentNavigationActivity{
     public void showFindStudioActivity(View view) {
         if (!isOnline())
             showAlertDialog("Проверьте подключение к интернету", "ОШИБКА");
-        {
+        else {
             Intent intent = new Intent(this, FindStudioActivity.class);
             startActivity(intent);
-       }
+        }
     }
 }

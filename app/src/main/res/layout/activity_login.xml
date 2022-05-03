@@ -35,11 +35,11 @@
                 android:layout_gravity="center"
                 android:fontFamily="sans-serif"
                 android:paddingTop="50dp"
-                android:text="Введите ваш номер телефона (10 цифр)"
+                android:text="Введите ваш номер телефона,начиная с 8 и далее 10 цифр"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#031245"
-                android:textSize="26sp"
+                android:textSize="24sp"
                 android:textStyle="normal" />
 
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:padding="25dp"
+                android:padding="18dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="50dp">
 
