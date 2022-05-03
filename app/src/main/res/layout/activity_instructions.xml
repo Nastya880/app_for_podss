@@ -2,6 +2,7 @@
 <androidx.drawerlayout.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/drawerLayout"
@@ -36,17 +37,110 @@
                 android:layout_height="wrap_content"
                 android:scrollbars="vertical"
                 android:fillViewport="true">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/textInstruction"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Для использования приложения"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_marginTop="40dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"/>
+                    <TextView
+                        android:id="@+id/textView1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:text="Приложение предназначено для людей, которым интересна деятельность спортивного направления.\n
+В приложении предумотрено выполнение следующих функций:\n"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textInstruction1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_menu_fill0_wght400_grad0_opsz48"
+                        android:text="Боковое меню: для его вызова провести пальцем по экрану вправо или нажать на иконку в правом верхнем углу\n"
+                        android:paddingLeft="10dp"
+                        android:textColor="@color/black"
+                        android:textCursorDrawable="@drawable/ic_exit_to_app_black_24dp"
+                        android:paddingRight="10dp"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textInstruction2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_geography_for_instruction"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:text="Просмотр информации о спортивных студиях: для этого необходимо перейти по нажатию кнопки 'Найти студию', которая доступна на 'Главной' или в боковом меню\n"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/textInstruction3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_icons_find_filter_instruction"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:text="Поиск спортивной студии по названию: для этого на странице 'Найти студию' в поле названия ввести название студии и нажать 'Готово' на клавиатуре\n"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/textInstruction4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_icons_find_filter_instruction"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:text="Поиск спортивной студии по минимальной стоимости одной тренировки: для этого на экране 'Найти студию' ползунком отрегулировать нужную стоимость\n"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/textInstruction5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_calendar_for_instruction"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:text="Просмотр информации о мероприятиях: для этого необходимо перейти по кнопке 'Найти мероприятие', которая доступна на 'Главной' или в боковом меню"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/textInstruction6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_icons_find_filter_instruction"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:text="Поиск мероприятия по названию: для этого необходимо перейти по кнопке 'Найти мероприятие' в поле названия ввести название мероприятия и нажать 'Готово' на клавиатуре\n"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="16sp" />
+                    <TextView
+                        android:id="@+id/textInstruction7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawableLeft="@drawable/ic_bookmark_added_black_for_instruction"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:textColor="@color/black"
+                        android:text="Добавление мероприятия по названию: для этого необходимо перейти по кнопке 'Добавить мероприятие', которая доступна на 'Главной' или в боковом меню, и следовать подсказкам, указанным на экране\n"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
 
             </ScrollView>
         </LinearLayout>
