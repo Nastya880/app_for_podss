@@ -49,7 +49,7 @@
                 android:layout_marginTop="80dp"
                 android:layout_marginRight="20dp"
                 android:backgroundTint="@color/blue_dark"
-                android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"
+                android:drawableLeft="@drawable/ic_bookmark_added_black_24dp_1"
                 android:onClick="addNewButton"
                 android:textColor="@color/white"
                 android:text="Добавить новое мероприятие"

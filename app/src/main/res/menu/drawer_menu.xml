@@ -12,12 +12,17 @@
             android:title="Найти студию">
         </item>
         <item android:id="@+id/nav_find_event"
-            android:icon="@drawable/ic_calendar"
+            android:icon="@drawable/ic_calendar_11"
             android:title="Найти мероприятие">
         </item>
         <item android:id="@+id/nav_add_event"
-            android:icon="@drawable/ic_bookmark_added_black_24dp"
+            android:icon="@drawable/ic_bookmark_added_black_24dp_1"
             android:title="Добавить мероприятие">
+        </item>
+
+        <item android:id="@+id/nav_add_studio"
+            android:icon="@drawable/ic_icons8_add_column_48"
+            android:title="Добавить студию">
         </item>
 
     </group>

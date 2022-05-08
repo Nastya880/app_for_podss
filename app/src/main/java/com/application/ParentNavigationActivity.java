@@ -50,6 +50,10 @@ public class ParentNavigationActivity extends AppCompatActivity {
                         Intent intentfindStudio = new Intent(ParentNavigationActivity.this, FindStudioActivity.class);
                         startActivity(intentfindStudio);
                         break;
+                    case  R.id.nav_add_studio:
+                        Intent intentaddStudio = new Intent(ParentNavigationActivity.this, AddStudioActivity.class);
+                        startActivity(intentaddStudio);
+                        break;
                     case R.id.nav_instruction:
                         Intent intentInstructions = new Intent(ParentNavigationActivity.this , InstructionsActivity.class);
                         startActivity(intentInstructions);

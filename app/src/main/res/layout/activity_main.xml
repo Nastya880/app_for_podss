@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/blue_dark"
-                    android:drawableLeft="@drawable/ic_bookmark_added_black_24dp"
+                    android:drawableLeft="@drawable/ic_bookmark_added_black_24dp_1"
                     android:onClick="showLoginActivity"
 
                     android:text="@string/addButton"
@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:backgroundTint="@color/blue_dark"
-                    android:drawableLeft="@drawable/ic_calendar"
+                    android:drawableLeft="@drawable/ic_calendar_11"
                     android:onClick="showFindEventActivity"
                     android:text="@string/findEventButton"
                     android:textColor="@color/white"

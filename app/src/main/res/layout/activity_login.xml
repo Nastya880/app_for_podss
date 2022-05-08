@@ -23,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:background="@color/orange"
                 app:subtitleTextColor="#0A0A0A"
-                app:title="Авторизация"
+                app:title="Регистрация"
                 app:titleMargin="15dp"
                 app:titleTextColor="@color/white" />
 
@@ -35,7 +35,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="sans-serif"
                 android:paddingTop="50dp"
-                android:text="Введите ваш номер телефона,начиная с 8 и далее 10 цифр"
+                android:text="Для добавления мероприятия введите ваш контактный номер телефона"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#031245"
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif"
                 android:layout_marginTop="20dp"
-                android:text=" Формат: +7 (XХХ) ХХХ-ХХ-ХХ"
+                android:text="В формате: первая цифра 8 и далее 10 цифр"
                 android:textAlignment="center"
                 android:textAllCaps="true"
                 android:textColor="#031245"

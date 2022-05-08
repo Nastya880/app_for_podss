@@ -132,7 +132,7 @@
                         android:id="@+id/textInstruction7"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:drawableLeft="@drawable/ic_bookmark_added_black_for_instruction"
+                        android:drawableLeft="@drawable/ic_bookmark_added_black_for_instruction1"
                         android:paddingLeft="10dp"
                         android:paddingRight="10dp"
                         android:textColor="@color/black"
